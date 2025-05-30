@@ -1,22 +1,17 @@
-// app/contact/page.tsx
-
 "use client";
 
-import { useState } from "react";
-import Swal from "sweetalert2";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Chrome, Linkedin } from "lucide-react";
+import Swal from "sweetalert2";
 
 export default function ContactPage() {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
     const formData = new FormData(event.currentTarget);
-
-    formData.append("access_key", "aa8354b7-18d4-4419-91da-afd2af041e66 ");
-
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
+    formData.append("access_key", "aa8354b7-18d4-4419-91da-afd2af041e66");
 
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -24,72 +19,85 @@ export default function ContactPage() {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: json,
+      body: JSON.stringify(Object.fromEntries(formData)),
     });
 
     const result = await response.json();
     if (result.success) {
       Swal.fire({
         title: "Message Sent!",
-        text: "Thanks for contacting us. We'll get back to you soon.",
+        text: "Thanks for contacting us.",
         icon: "success",
-        confirmButtonColor: "#06b6d4", // Tailwind cyan-500
+        background: "#09090b",
+        color: "#e4e4e7",
+        confirmButtonColor: "#16a34a",
       });
-      event.currentTarget.reset(); // Clear form
+      event.currentTarget.reset();
     } else {
       Swal.fire({
-        title: "Oops!",
-        text: "Something went wrong. Please try again.",
+        title: "Error",
+        text: "Please try again.",
         icon: "error",
-        confirmButtonColor: "#ef4444", // Tailwind red-500
+        background: "#09090b",
+        color: "#e4e4e7",
+        confirmButtonColor: "#ef4444",
       });
     }
   }
 
   return (
-    <div className="min-h-screen bg-black text-white px-4 py-10">
-      <div className="max-w-2xl mx-auto text-center">
-        <h1 className="text-4xl font-bold text-cyan-400 mb-6">Contact Us</h1>
-        <p className="text-lg text-zinc-300 mb-10">
-          Have a question or business inquiry? Let’s talk!
-        </p>
-      </div>
+    <div className="w-full min-h-screen px-4 py-12 bg-background text-foreground">
+      <h1 className="text-4xl md:text-5xl font-bold text-center mb-12">
+        Contact Us
+      </h1>
 
-      <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-6">
-        <Input
-          type="text"
-          name="name"
-          placeholder="Your Name"
-          required
-          className="bg-zinc-900 border border-cyan-600 placeholder:text-zinc-400"
-        />
-        <Input
-          type="email"
-          name="email"
-          placeholder="Your Email"
-          required
-          className="bg-zinc-900 border border-cyan-600 placeholder:text-zinc-400"
-        />
-        <Input
-          type="text"
-          name="subject"
-          placeholder="Subject"
-          required
-          className="bg-zinc-900 border border-cyan-600 placeholder:text-zinc-400"
-        />
-        <Textarea
-          name="message"
-          placeholder="Your Message"
-          required
-          className="bg-zinc-900 border border-cyan-600 placeholder:text-zinc-400"
-        />
-        <Button
-          type="submit"
-          className="bg-cyan-500 hover:bg-cyan-600 text-black font-semibold w-full"
-        >
-          Send Message
-        </Button>
-      </form>
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+        {/* Contact Form */}
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Input name="firstName" placeholder="First Name" required />
+            <Input name="lastName" placeholder="Last Name" required />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Input name="email" type="email" placeholder="Email" required />
+            <Input name="phone" placeholder="Phone Number" />
+          </div>
+          <div>
+            <Textarea name="message" placeholder="What do you have in mind?" required />
+          </div>
+          <Button type="submit" className="w-full">
+            Submit
+          </Button>
+        </form>
+
+        {/* Contact Info */}
+        <div className="space-y-6">
+          <p className="text-muted-foreground">
+            Feel free to reach out to us with any queries or suggestions.
+          </p>
+          <div className="space-y-4 text-sm text-muted-foreground">
+            <div className="flex items-center gap-3">
+              <Phone className="w-5 h-5" />
+              <span>+1 258 3258 5679</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <Mail className="w-5 h-5" />
+              <span>hello@workik.com</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <MapPin className="w-5 h-5" />
+              <span>102 Street, Y Cross 485656</span>
+            </div>
+          </div>
+
+          <div className="flex gap-6 pt-6 text-muted-foreground">
+            <Linkedin className="w-5 h-5 hover:text-foreground cursor-pointer" />
+            <Twitter className="w-5 h-5 hover:text-foreground cursor-pointer" />
+            <Instagram className="w-5 h-5 hover:text-foreground cursor-pointer" />
+            <Facebook className="w-5 h-5 hover:text-foreground cursor-pointer" />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
