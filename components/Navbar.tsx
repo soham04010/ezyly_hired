@@ -1,182 +1,145 @@
-'use client'
+"use client";
+import React, { useState } from 'react';
+import { ChevronDown, Search, User, Menu, X } from 'lucide-react';
 
-import Link from 'next/link'
-import Image from 'next/image'
-import { useState, useEffect } from 'react'
-import { usePathname } from 'next/navigation'
-import { Menu, X, ChevronDown, Sun, Moon } from 'lucide-react'
-import { setTheme, getSavedTheme } from '@/theme'  // Your theme utils
+const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
-export function Navbar() {
-  const pathname = usePathname()
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [servicesOpen, setServicesOpen] = useState(false)
-  const [theme, setThemeState] = useState<'light' | 'dark'>(getSavedTheme())
-  const [isScrolled, setIsScrolled] = useState(false)
-
-  const NAVBAR_HEIGHT = 64 // px, adjust if needed
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark'
-    setTheme(newTheme)
-    setThemeState(newTheme)
-  }
-
-  useEffect(() => {
-    setTheme(theme) // Apply saved theme on load
-  }, [])
-
-  useEffect(() => {
-    function handleScroll() {
-      if (window.scrollY > 10) {
-        setIsScrolled(true)
-      } else {
-        setIsScrolled(false)
-      }
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  // Transparent only on homepage and scroll at top
-  const isTransparent = pathname === '/' && !isScrolled
+  const toggleDropdown = (dropdown: string) => {
+    setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
+  };
 
   return (
-    <>
-      <header
-        style={{ height: NAVBAR_HEIGHT }}
-        className={`w-full z-50 transition-colors duration-300
-          ${isTransparent
-            ? 'fixed top-0 left-0 right-0 bg-transparent shadow-none'
-            : 'sticky top-0 bg-background shadow-lg shadow-cyan-500/10'
-          }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
+    <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <Image
-              src="/final print.png"
-              alt="EzylyHired Logo"
-              width={200}
-              height={200}
-              priority
-            />
-            <span className="ml-2 text-2xl font-extrabold text-cyan-400 tracking-wider hover:text-foreground transition-all hidden sm:inline" />
-          </Link>
+          <div className="flex items-center">
+            <div className="flex items-center">
+              {/* <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                <span className="text-white font-bold text-lg">E</span>
+              </div> */}
+              <img 
+                src="logo.png" 
+                alt="EzylyHired Logo" 
+                className="h-8 w-auto mr-2"
+              />
+              <span className="text-2xl font-bold text-gray-900">EzylyHired</span>
+            </div>
+          </div>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center space-x-8 relative">
-            <HoverLink href="/" text="Home" />
-            <HoverLink href="/about" text="About Us" />
-
-            <div
-              className="relative"
-              onMouseEnter={() => setServicesOpen(true)}
-              onMouseLeave={() => setServicesOpen(false)}
-            >
-              <button className="flex items-center text-foreground hover:text-cyan-400 font-medium transition-all px-2 py-1">
-                Services <ChevronDown size={16} className="ml-1" />
-              </button>
-
-              <div
-                className={`absolute left-0 w-64 bg-popover border border-cyan-700 rounded-lg shadow-xl py-2 transition-all duration-200 z-50 ${
-                  servicesOpen ? 'block' : 'hidden'
-                }`}
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex space-x-6">
+            <div className="relative group">
+              <button 
+                className="flex items-center text-gray-700 hover:text-blue-600 px-4 py-2 text-sm font-medium transition-all duration-300 transform hover:scale-105"
+                onClick={() => toggleDropdown('jobs')}
               >
-                <DropdownLink href="/services/individual" text="Individual Services" />
-                <DropdownLink href="/services/description" text="Service Description" />
-                <DropdownLink href="/services/plans" text="Plans" />
+                Find Jobs
+                <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-300 ${activeDropdown === 'jobs' ? 'rotate-180' : ''}`} />
+              </button>
+              <div className={`absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-lg border transition-all duration-300 transform ${activeDropdown === 'jobs' ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'}`}>
+                <div className="p-4">
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Browse All Jobs</a>
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Remote Jobs</a>
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Part-time Jobs</a>
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Contract Jobs</a>
+                </div>
               </div>
             </div>
 
-            <HoverLink href="/contact" text="Contact Us" />
+            <div className="relative group">
+              <button 
+                className="flex items-center text-gray-700 hover:text-blue-600 px-4 py-2 text-sm font-medium transition-all duration-300 transform hover:scale-105"
+                onClick={() => toggleDropdown('employers')}
+              >
+                For Employers
+                <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-300 ${activeDropdown === 'employers' ? 'rotate-180' : ''}`} />
+              </button>
+              <div className={`absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-lg border transition-all duration-300 transform ${activeDropdown === 'employers' ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'}`}>
+                <div className="p-4">
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Post a Job</a>
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Talent Solutions</a>
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Recruitment Services</a>
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Employer Resources</a>
+                </div>
+              </div>
+            </div>
 
-            <button
-              onClick={toggleTheme}
-              className="text-muted-foreground hover:text-cyan-400 transition-all"
-              aria-label="Toggle theme"
-            >
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
+            <div className="relative group">
+              <button 
+                className="flex items-center text-gray-700 hover:text-blue-600 px-4 py-2 text-sm font-medium transition-all duration-300 transform hover:scale-105"
+                onClick={() => toggleDropdown('services')}
+              >
+                Services
+                <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-300 ${activeDropdown === 'services' ? 'rotate-180' : ''}`} />
+              </button>
+              <div className={`absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-lg border transition-all duration-300 transform ${activeDropdown === 'services' ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'}`}>
+                <div className="p-4">
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Consulting Solutions</a>
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Training Programs</a>
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Career Development</a>
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Workforce Solutions</a>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative group">
+              <button 
+                className="flex items-center text-gray-700 hover:text-blue-600 px-4 py-2 text-sm font-medium transition-all duration-300 transform hover:scale-105"
+                onClick={() => toggleDropdown('resources')}
+              >
+                Resources
+                <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-300 ${activeDropdown === 'resources' ? 'rotate-180' : ''}`} />
+              </button>
+              <div className={`absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-lg border transition-all duration-300 transform ${activeDropdown === 'resources' ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'}`}>
+                <div className="p-4">
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Career Tips</a>
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Industry Insights</a>
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Salary Guide</a>
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Blog</a>
+                </div>
+              </div>
+            </div>
           </nav>
 
-          {/* Mobile Nav */}
-          <div className="md:hidden flex items-center gap-4">
-            <button
-              onClick={toggleTheme}
-              className="text-muted-foreground hover:text-cyan-400 transition-all"
-              aria-label="Toggle theme"
-            >
-              {theme === 'dark' ? <Sun size={24} /> : <Moon size={24} />}
+          {/* Right side */}
+          <div className="flex items-center space-x-4">
+            <Search className="h-5 w-5 text-gray-600 cursor-pointer hover:text-blue-600 transition-colors duration-300" />
+            <button className="text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors duration-300">
+              Sign in
             </button>
-            <button onClick={() => setMenuOpen(!menuOpen)} className="text-cyan-400">
-              {menuOpen ? <X size={28} /> : <Menu size={28} />}
+            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-medium text-sm transition-all duration-300 transform hover:scale-105">
+              Post a Job
+            </button>
+            
+            {/* Mobile menu button */}
+            <button 
+              className="lg:hidden"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
 
-        {menuOpen && (
-          <div className="md:hidden bg-background border-t border-cyan-800 px-4 py-4 space-y-3">
-            <HoverLink href="/" text="Home" mobile />
-            <HoverLink href="/about" text="About Us" mobile />
-
-            <div>
-              <button
-                onClick={() => setServicesOpen(!servicesOpen)}
-                className="flex items-center justify-between w-full text-foreground hover:text-cyan-400"
-              >
-                Services <ChevronDown size={16} />
-              </button>
-              {servicesOpen && (
-                <div className="ml-4 mt-2 space-y-2">
-                  <HoverLink href="/services/individual" text="Individual Services" mobile />
-                  <HoverLink href="/services/description" text="Service Description" mobile />
-                  <HoverLink href="/services/plans" text="Plans" mobile />
-                </div>
-              )}
+        {/* Mobile Navigation */}
+        <div className={`lg:hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+          <div className="px-4 py-4 space-y-2 bg-gray-50 rounded-lg mt-2">
+            <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-white rounded transition-colors">Find Jobs</a>
+            <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-white rounded transition-colors">For Employers</a>
+            <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-white rounded transition-colors">Services</a>
+            <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-white rounded transition-colors">Resources</a>
+            <div className="pt-2 border-t border-gray-200">
+              <button className="w-full text-left px-4 py-2 text-blue-600 font-medium">Sign in</button>
+              <button className="w-full bg-blue-600 text-white px-4 py-2 rounded-full font-medium mt-2">Post a Job</button>
             </div>
-
-            <HoverLink href="/contact" text="Contact Us" mobile />
           </div>
-        )}
-      </header>
+        </div>
+      </div>
+    </header>
+  );
+};
 
-      {/* Spacer to prevent content jump when navbar sticky */}
-      {!isTransparent && <div style={{ height: NAVBAR_HEIGHT }} />}
-    </>
-  )
-}
-
-// 🌀 Neon hover nav link
-function HoverLink({
-  href,
-  text,
-  mobile = false,
-  className = '',
-}: {
-  href: string
-  text: string
-  mobile?: boolean
-  className?: string
-}) {
-  return (
-    <Link
-      href={href}
-      className={`${mobile ? 'block' : 'relative'} ${className} text-foreground font-medium transition-all hover:text-cyan-400 hover:tracking-wide`}
-    >
-      {text}
-    </Link>
-  )
-}
-
-// ⬇️ Submenu item
-function DropdownLink({ href, text }: { href: string; text: string }) {
-  return (
-    <Link
-      href={href}
-      className="block px-4 py-2 text-foreground hover:text-cyan-400 transition-all hover:bg-muted"
-    >
-      {text}
-    </Link>
-  )
-}
+export default Header;
