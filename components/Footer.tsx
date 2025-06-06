@@ -18,7 +18,7 @@ const Footer = () => {
     },
     {
       title: "About",
-      links: ["About Robert Half", "Leadership", "Careers With Us", "Locations", "Investor Center", "Press", "Our Brands", "Supplier Relations"]
+      links: ["About Ezyly Hired", "Leadership", "Careers With Us", "Locations", "Investor Center", "Press", "Our Brands", "Supplier Relations"]
     }
   ];
 
@@ -52,7 +52,7 @@ const Footer = () => {
             <div className="flex flex-col space-y-4">
               <div className="flex items-center">
                 <div className="w-10 h-10 bg-red-600 rounded flex items-center justify-center mr-3">
-                  <span className="text-white font-bold">rh</span>
+                  <span className="text-white font-bold">EH</span>
                 </div>
               </div>
               <div className="flex space-x-4">
@@ -86,7 +86,7 @@ const Footer = () => {
                 ))}
               </div>
               <div className="text-gray-400 text-sm">
-                <p>© 2025 Robert Half Inc.</p>
+                <p>© 2025 Ezyly Hired Inc.</p>
                 <p className="mt-1">An Equal Opportunity Employer M/F/Disability/Veterans.</p>
               </div>
             </div>

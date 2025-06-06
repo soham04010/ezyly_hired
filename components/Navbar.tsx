@@ -1,145 +1,163 @@
 "use client";
-import React, { useState } from 'react';
-import { ChevronDown, Search, User, Menu, X } from 'lucide-react';
+import React, { useEffect, useState } from "react";
+import { ChevronDown, Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 
-const Header = () => {
+const navLinks = [
+  { label: "About Us", href: "/about" },
+  {
+    label: "Services",
+    dropdown: [
+      { label: "Individual Services", href: "/services/individual" },
+      { label: "Service Description", href: "/services/description" },
+      { label: "Plans", href: "/services/plans" },
+    ],
+  },
+  { label: "Contact Us", href: "/contact" },
+  { label: "Testimonial", href: "/#TestimonialsSection" }, // Correct href added
+];
+
+const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
-  const toggleDropdown = (dropdown: string) => {
-    setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    if (isHome) {
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    } else {
+      setIsScrolled(true);
+    }
+  }, [isHome]);
+
+  const toggleDropdown = (label: string) => {
+    setActiveDropdown(activeDropdown === label ? null : label);
   };
 
+  const isWhite = !isHome || isScrolled;
+
   return (
-    <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+    <header
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isWhite ? "bg-white shadow-sm" : "bg-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex items-center">
-            <div className="flex items-center">
-              {/* <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
-                <span className="text-white font-bold text-lg">E</span>
-              </div> */}
-              <img 
-                src="logo.png" 
-                alt="EzylyHired Logo" 
-                className="h-8 w-auto mr-2"
+        <div className="flex items-center justify-between h-16">
+          {/* Logo and nav links on the left side */}
+          <div className="flex items-center gap-10">
+            <a href="/" className="flex items-center">
+              <img
+                src={isWhite ? "/logo1.png" : "/logo (2).png"}
+                alt="Logo"
+                className="h- w- transition duration-300"
               />
-              <span className="text-2xl font-bold text-gray-900">EzylyHired</span>
-            </div>
+            </a>
+
+            {/* Desktop nav links */}
+            <nav className="hidden md:flex items-center gap-8">
+              {navLinks.map(({ label, href, dropdown }) => (
+                <div key={label} className="relative group">
+                  {!dropdown ? (
+                    <a
+                      href={href}
+                      className={`text-base font-semibold ${
+                        isWhite ? "text-gray-800" : "text-white"
+                      } hover:text-red-600 transition-colors`}
+                    >
+                      {label}
+                    </a>
+                  ) : (
+                    <>
+                      <button
+                        onClick={() => toggleDropdown(label)}
+                        className={`flex items-center text-base font-semibold ${
+                          isWhite ? "text-gray-800" : "text-white"
+                        } hover:text-red-600 transition-colors`}
+                      >
+                        {label}
+                        <ChevronDown className="w-4 h-4 ml-1" />
+                      </button>
+                      {activeDropdown === label && (
+                        <div className="absolute top-full left-0 mt-2 py-2 w-52 bg-white rounded-md shadow-lg z-50">
+                          {dropdown.map(({ label: dLabel, href: dHref }) => (
+                            <a
+                              key={dLabel}
+                              href={dHref}
+                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            >
+                              {dLabel}
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+              ))}
+            </nav>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex space-x-6">
-            <div className="relative group">
-              <button 
-                className="flex items-center text-gray-700 hover:text-blue-600 px-4 py-2 text-sm font-medium transition-all duration-300 transform hover:scale-105"
-                onClick={() => toggleDropdown('jobs')}
-              >
-                Find Jobs
-                <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-300 ${activeDropdown === 'jobs' ? 'rotate-180' : ''}`} />
-              </button>
-              <div className={`absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-lg border transition-all duration-300 transform ${activeDropdown === 'jobs' ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'}`}>
-                <div className="p-4">
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Browse All Jobs</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Remote Jobs</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Part-time Jobs</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Contract Jobs</a>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative group">
-              <button 
-                className="flex items-center text-gray-700 hover:text-blue-600 px-4 py-2 text-sm font-medium transition-all duration-300 transform hover:scale-105"
-                onClick={() => toggleDropdown('employers')}
-              >
-                For Employers
-                <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-300 ${activeDropdown === 'employers' ? 'rotate-180' : ''}`} />
-              </button>
-              <div className={`absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-lg border transition-all duration-300 transform ${activeDropdown === 'employers' ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'}`}>
-                <div className="p-4">
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Post a Job</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Talent Solutions</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Recruitment Services</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Employer Resources</a>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative group">
-              <button 
-                className="flex items-center text-gray-700 hover:text-blue-600 px-4 py-2 text-sm font-medium transition-all duration-300 transform hover:scale-105"
-                onClick={() => toggleDropdown('services')}
-              >
-                Services
-                <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-300 ${activeDropdown === 'services' ? 'rotate-180' : ''}`} />
-              </button>
-              <div className={`absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-lg border transition-all duration-300 transform ${activeDropdown === 'services' ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'}`}>
-                <div className="p-4">
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Consulting Solutions</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Training Programs</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Career Development</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Workforce Solutions</a>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative group">
-              <button 
-                className="flex items-center text-gray-700 hover:text-blue-600 px-4 py-2 text-sm font-medium transition-all duration-300 transform hover:scale-105"
-                onClick={() => toggleDropdown('resources')}
-              >
-                Resources
-                <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-300 ${activeDropdown === 'resources' ? 'rotate-180' : ''}`} />
-              </button>
-              <div className={`absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-lg border transition-all duration-300 transform ${activeDropdown === 'resources' ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'}`}>
-                <div className="p-4">
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Career Tips</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Industry Insights</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Salary Guide</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded transition-colors">Blog</a>
-                </div>
-              </div>
-            </div>
-          </nav>
-
-          {/* Right side */}
-          <div className="flex items-center space-x-4">
-            <Search className="h-5 w-5 text-gray-600 cursor-pointer hover:text-blue-600 transition-colors duration-300" />
-            <button className="text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors duration-300">
-              Sign in
-            </button>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-medium text-sm transition-all duration-300 transform hover:scale-105">
-              Post a Job
-            </button>
-            
-            {/* Mobile menu button */}
-            <button 
-              className="lg:hidden"
+          {/* Mobile menu toggle */}
+          <div className="md:hidden">
+            <button
               onClick={() => setIsOpen(!isOpen)}
+              className={`${
+                isWhite ? "text-gray-900" : "text-white"
+              } transition-colors`}
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        <div className={`lg:hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
-          <div className="px-4 py-4 space-y-2 bg-gray-50 rounded-lg mt-2">
-            <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-white rounded transition-colors">Find Jobs</a>
-            <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-white rounded transition-colors">For Employers</a>
-            <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-white rounded transition-colors">Services</a>
-            <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-white rounded transition-colors">Resources</a>
-            <div className="pt-2 border-t border-gray-200">
-              <button className="w-full text-left px-4 py-2 text-blue-600 font-medium">Sign in</button>
-              <button className="w-full bg-blue-600 text-white px-4 py-2 rounded-full font-medium mt-2">Post a Job</button>
-            </div>
+        {/* Mobile nav */}
+        {isOpen && (
+          <div className="md:hidden mt-4 space-y-4 bg-white rounded-md p-4 shadow-lg">
+            {navLinks.map(({ label, href, dropdown }) => (
+              <div key={label} className="space-y-2">
+                {!dropdown ? (
+                  <a
+                    href={href}
+                    className="block text-base text-gray-700 font-medium hover:text-red-600"
+                  >
+                    {label}
+                  </a>
+                ) : (
+                  <>
+                    <button
+                      onClick={() => toggleDropdown(label)}
+                      className="flex justify-between items-center w-full text-base text-gray-700 font-medium"
+                    >
+                      {label}
+                      <ChevronDown className="w-4 h-4" />
+                    </button>
+                    {activeDropdown === label && (
+                      <div className="ml-4 space-y-1">
+                        {dropdown.map(({ label: dLabel, href: dHref }) => (
+                          <a
+                            key={dLabel}
+                            href={dHref}
+                            className="block text-sm text-gray-600 hover:text-gray-800"
+                          >
+                            {dLabel}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                )}
+              </div>
+            ))}
           </div>
-        </div>
+        )}
       </div>
     </header>
   );
 };
 
-export default Header;
+export default Navbar;
