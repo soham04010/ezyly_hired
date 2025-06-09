@@ -12,32 +12,40 @@ const Services = () => {
     {
       name: 'DIAMOND PLAN',
       price: '$10000',
+      description: 'Upfront (No Other Payments)',
       income: '8.12% of Annual Income (First Year Only)',
-      duration: '2-month Job Guarantee',
+      duration: '2-month',
+      guarantee: 'Job Guarantee',
       color: 'bg-cyan-500',
       textColor: 'text-white'
     },
     {
       name: 'PLATINUM PLAN',
       price: '$4000',
+      description: 'Upfront (No Other Payments)',
       income: '6.14% of Annual Income (First Year Only)',
-      duration: '2-month Job Guarantee',
+      duration: '2-month',
+      guarantee: 'Job Guarantee',
       color: 'bg-blue-500',
       textColor: 'text-white'
     },
     {
       name: 'GOLD PLAN',
       price: '$3000',
+      description: 'Upfront (No Other Payments)',
       income: '5.14% of Annual Income (First Year Only)',
-      duration: '3-month Job Guarantee',
+      duration: '3-month',
+      guarantee: 'Job Guarantee',
       color: 'bg-yellow-500',
-      textColor: 'text-white'
+      textColor: 'text-black'
     },
     {
       name: 'SILVER PLAN',
       price: '$2000',
+      description: 'Upfront (No Other Payments)',
       income: '4.14% of Annual Income (First Year Only)',
-      duration: '4-month Job Guarantee',
+      duration: '4-month',
+      guarantee: 'Job Guarantee',
       color: 'bg-gray-400',
       textColor: 'text-white'
     }
@@ -45,43 +53,58 @@ const Services = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="bg-gray-50 py-16">
+      {/* Hero Section with Gradient */}
+      <section className="bg-gradient-to-r from-slate-800 via-blue-900 to-teal-800 py-20">
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold mb-4 text-blue-600">
-            HighWages Placement Solutions
+          <h1 className="text-5xl font-bold mb-6 text-white">
+            Plans & Services
           </h1>
-          <h2 className="text-3xl font-bold text-blue-600 underline mb-8">
-            Compensation Plan
-          </h2>
+          <p className="text-xl text-blue-100 mb-4 max-w-4xl mx-auto">
+            Industry leading Specialists in Talent Acquisition, Job Hunting, VMS and IT Recruitment
+          </p>
+          <p className="text-lg text-blue-200">
+            Explore our services & Plans
+          </p>
         </div>
       </section>
 
-      {/* Plans Section */}
-      <section className="py-16">
+      {/* Compensation Plan Header */}
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold text-blue-600 underline mb-4">
+            HighWages Placement Solutions
+          </h2>
+          <h3 className="text-2xl font-bold text-blue-600 underline">
+            Compensation Plan
+          </h3>
+        </div>
+      </section>
+
+      {/* Plans Grid */}
+      <section className="py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="grid md:grid-cols-4 gap-6 mb-16">
             {plans.map((plan, index) => (
-              <Card key={index} className="border border-gray-200 shadow-lg">
+              <Card key={index} className="border-2 border-gray-300 shadow-lg bg-white">
                 <CardHeader className={`${plan.color} ${plan.textColor} text-center py-4`}>
                   <CardTitle className="text-lg font-bold">{plan.name}</CardTitle>
                 </CardHeader>
-                <CardContent className="p-6 text-center">
-                  <div className="text-3xl font-bold text-gray-900 mb-4">{plan.price}</div>
-                  <div className="text-sm text-gray-600 mb-2">
-                    Upfront (No Other Payments)
+                <CardContent className="p-6 text-center bg-white">
+                  <div className="text-4xl font-bold text-black mb-2">{plan.price.replace('$', '')}</div>
+                  <div className="text-sm text-gray-700 mb-4">
+                    {plan.description}
                   </div>
-                  <div className="text-sm text-gray-700 mb-4 font-medium">
+                  <div className="text-sm text-gray-800 font-medium mb-4">
                     {plan.income}
                   </div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm text-gray-700 mb-2">
                     {plan.duration}
                   </div>
-                  <div className="text-sm text-gray-600 mb-6">
-                    Job Guarantee
+                  <div className="text-sm text-gray-700 mb-6">
+                    {plan.guarantee}
                   </div>
                   <Button 
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2"
                     onClick={() => router.push('/contact')}
                   >
                     Choose Plan
@@ -95,11 +118,11 @@ const Services = () => {
 
       {/* Terms and Conditions */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Terms and Conditions:</h2>
-          
-          <div className="bg-white rounded-lg p-8 border border-gray-200">
-            <div className="text-gray-700 leading-relaxed space-y-4">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="bg-white rounded-lg p-8 border border-gray-300 shadow-sm">
+            <h2 className="text-2xl font-bold text-black mb-6">Terms and conditions:</h2>
+            
+            <div className="text-gray-800 leading-relaxed space-y-4">
               <p>
                 <strong>1. Payment Terms:</strong> All payments are upfront with no additional charges. The specified percentage of annual income is calculated based on your first year salary only.
               </p>
@@ -124,7 +147,7 @@ const Services = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16">
+      <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
             Ready to Start Your Career Journey?
