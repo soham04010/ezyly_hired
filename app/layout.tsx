@@ -12,7 +12,8 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html>
+    <html lang="en" suppressHydrationWarning>
+      {/* suppressHydrationWarning tells React to ignore initial mismatch on html */}
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
