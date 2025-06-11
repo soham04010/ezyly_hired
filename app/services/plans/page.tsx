@@ -150,7 +150,7 @@ const Services = () => {
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Ready to Start Your Career Journey?
+            For Any Queries or Assistance Contact Us
           </h2>
           <p className="text-lg text-gray-600 mb-8">
             Choose the plan that best fits your needs and let us help you secure your dream job.
@@ -159,7 +159,7 @@ const Services = () => {
             className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg"
             onClick={() => router.push('/contact')}
           >
-            Get Started Today
+            Contact Us
           </Button>
         </div>
       </section>
