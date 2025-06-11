@@ -11,7 +11,7 @@ const Services = () => {
   const plans = [
     {
       name: 'DIAMOND PLAN',
-      price: '$10000',
+      price: '$$10000',
       description: 'Upfront (No Other Payments)',
       income: '8.12% of Annual Income (First Year Only)',
       duration: '2-month',
@@ -21,7 +21,7 @@ const Services = () => {
     },
     {
       name: 'PLATINUM PLAN',
-      price: '$4000',
+      price: '$$4000',
       description: 'Upfront (No Other Payments)',
       income: '6.14% of Annual Income (First Year Only)',
       duration: '2-month',
@@ -31,7 +31,7 @@ const Services = () => {
     },
     {
       name: 'GOLD PLAN',
-      price: '$3000',
+      price: '$$3000',
       description: 'Upfront (No Other Payments)',
       income: '5.14% of Annual Income (First Year Only)',
       duration: '3-month',
@@ -41,7 +41,7 @@ const Services = () => {
     },
     {
       name: 'SILVER PLAN',
-      price: '$2000',
+      price: '$$2000',
       description: 'Upfront (No Other Payments)',
       income: '4.14% of Annual Income (First Year Only)',
       duration: '4-month',
@@ -69,7 +69,7 @@ const Services = () => {
       </section>
 
       {/* Compensation Plan Header */}
-      <section className="py-12 bg-gray-50">
+      {/* <section className="py-12 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-blue-600 underline mb-4">
             HighWages Placement Solutions
@@ -78,7 +78,7 @@ const Services = () => {
             Compensation Plan
           </h3>
         </div>
-      </section>
+      </section> */}
 
       {/* Plans Grid */}
       <section className="py-16 bg-gray-50">
