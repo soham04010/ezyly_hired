@@ -13,8 +13,8 @@ const navLinks = [
       { label: "Plans", href: "/services/plans" },
     ],
   },
-  { label: "Contact Us", href: "/contact" },
-  { label: "Testimonial", href: "/#TestimonialsSection" }, // Correct href added
+  { label: "Testimonial", href: "/#TestimonialsSection" },
+  { label: "Contact Us", href: "/contact" }, // Correct href added
 ];
 
 const Navbar = () => {

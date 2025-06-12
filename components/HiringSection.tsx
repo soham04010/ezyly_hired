@@ -34,7 +34,7 @@ const HiringSection = () => {
                   <Check className="h-3 w-3 sm:h-4 sm:w-4 text-red-600" />
                 </div>
                 <p className="text-gray-700 text-base sm:text-lg">
-                  Preview recruiter-assessed and AI-matched candidates
+                 Book a consultation with our recruiters to map your path to employment after graduation.
                 </p>
               </div>
               
@@ -43,7 +43,7 @@ const HiringSection = () => {
                   <Check className="h-3 w-3 sm:h-4 sm:w-4 text-red-600" />
                 </div>
                 <p className="text-gray-700 text-base sm:text-lg">
-                  Book a consultation with one of our recruiters to discuss your hiring needs
+                  Get personalized, step-by-step support—from profile building to landing the offer.
                 </p>
               </div>
               
@@ -52,7 +52,7 @@ const HiringSection = () => {
                   <Check className="h-3 w-3 sm:h-4 sm:w-4 text-red-600" />
                 </div>
                 <p className="text-gray-700 text-base sm:text-lg">
-                  Get dedicated expert support at every step of the way
+                  Preview job roles tailored to your skills, background, and visa requirements.
                 </p>
               </div>
             </div>
