@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from 'react';
-import Link from 'next/link';
 
 const JobCategoriesSection = () => {
   const [activeCategory, setActiveCategory] = useState(0);
@@ -106,86 +105,104 @@ const JobCategoriesSection = () => {
   const currentCategory = categories[activeCategory];
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center mb-12">
-          <div className="flex space-x-0 bg-white rounded-full p-1 shadow-lg">
-            {categories.map((category, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveCategory(index)}
-                className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-                  index === activeCategory 
-                    ? 'bg-blue-600 text-white shadow-md' 
-                    : 'text-gray-600 hover:text-gray-900'
-                }`}
-              >
-                {category.name}
-              </button>
-            ))}
+        <div className="mb-8 sm:mb-12">
+          {/* Mobile: Dropdown style */}
+          <div className="sm:hidden">
+            <select 
+              value={activeCategory} 
+              onChange={(e) => setActiveCategory(parseInt(e.target.value))}
+              className="w-full p-3 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700"
+            >
+              {categories.map((category, index) => (
+                <option key={index} value={index}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          
+          {/* Desktop: Tab style */}
+          <div className="hidden sm:flex flex-wrap justify-center">
+            <div className="flex space-x-0 bg-white rounded-full p-1 shadow-lg overflow-x-auto">
+              {categories.map((category, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveCategory(index)}
+                  className={`px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 whitespace-nowrap ${
+                    index === activeCategory 
+                      ? 'bg-blue-600 text-white shadow-md' 
+                      : 'text-gray-600 hover:text-gray-900'
+                  }`}
+                >
+                  {category.name}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           {/* Left Content */}
-          <div>
-            <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+          <div className="order-2 lg:order-1">
+            <p className="text-gray-600 text-base sm:text-lg mb-6 sm:mb-8 leading-relaxed">
               {currentCategory.description}
             </p>
             
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6">Trending job titles</h3>
+            <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">Trending job titles</h3>
             
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+              <div className="space-y-3 sm:space-y-4">
                 {currentCategory.jobs.filter(job => job.category === 'left').map((job, index) => (
-                  <a key={index} href="#" className="block text-blue-600 hover:text-blue-700 font-medium underline">
+                  <a key={index} href="#" className="block text-blue-600 hover:text-blue-700 font-medium underline text-sm sm:text-base">
                     {job.title}
                   </a>
                 ))}
               </div>
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {currentCategory.jobs.filter(job => job.category === 'right').map((job, index) => (
-                  <a key={index} href="#" className="block text-blue-600 hover:text-blue-700 font-medium underline">
+                  <a key={index} href="#" className="block text-blue-600 hover:text-blue-700 font-medium underline text-sm sm:text-base">
                     {job.title}
                   </a>
                 ))}
               </div>
             </div>
             
-            <Link 
-              href={currentCategory.path}
-              className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium mt-6"
+            <button
+              onClick={() => window.location.href = currentCategory.path}
+              className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium mt-4 sm:mt-6 text-sm sm:text-base"
             >
               {currentCategory.learnMore} →
-            </Link>
+            </button>
           </div>
           
           {/* Right Images */}
-          <div className="relative">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-4">
-                <div className="rounded-2xl overflow-hidden">
+          <div className="relative order-1 lg:order-2">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
+              <div className="space-y-3 sm:space-y-4">
+                <div className="rounded-xl sm:rounded-2xl overflow-hidden">
                   <img 
                     src={currentCategory.images[0]} 
                     alt={`${currentCategory.name} professional`}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-32 sm:h-40 md:h-48 object-cover"
                   />
                 </div>
-                <div className="rounded-2xl overflow-hidden">
+                <div className="rounded-xl sm:rounded-2xl overflow-hidden">
                   <img 
                     src={currentCategory.images[1]} 
                     alt="Team collaboration"
-                    className="w-full h-32 object-cover"
+                    className="w-full h-24 sm:h-28 md:h-32 object-cover"
                   />
                 </div>
               </div>
-              <div className="pt-8">
-                <div className="rounded-2xl overflow-hidden">
+              <div className="pt-4 sm:pt-6 md:pt-8">
+                <div className="rounded-xl sm:rounded-2xl overflow-hidden">
                   <img 
                     src={currentCategory.images[2]} 
                     alt={`${currentCategory.name} workspace`}
-                    className="w-full h-64 object-cover"
+                    className="w-full h-48 sm:h-56 md:h-64 object-cover"
                   />
                 </div>
               </div>
