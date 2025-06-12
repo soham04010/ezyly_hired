@@ -1,3 +1,4 @@
+
 "use client";
 import React, { useState } from 'react';
 
@@ -114,7 +115,7 @@ const JobCategoriesSection = () => {
             <select 
               value={activeCategory} 
               onChange={(e) => setActiveCategory(parseInt(e.target.value))}
-              className="w-full p-3 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700"
+              className="w-full p-3 bg-white border border-gray-300 rounded-lg text-sm font-medium text-[#424242] font-gilroy"
             >
               {categories.map((category, index) => (
                 <option key={index} value={index}>
@@ -131,10 +132,10 @@ const JobCategoriesSection = () => {
                 <button
                   key={index}
                   onClick={() => setActiveCategory(index)}
-                  className={`px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 whitespace-nowrap ${
+                  className={`px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 whitespace-nowrap font-gilroy ${
                     index === activeCategory 
                       ? 'bg-blue-600 text-white shadow-md' 
-                      : 'text-gray-600 hover:text-gray-900'
+                      : 'text-[#424242] hover:text-gray-900'
                   }`}
                 >
                   {category.name}
@@ -151,7 +152,7 @@ const JobCategoriesSection = () => {
               {currentCategory.description}
             </p>
             
-            <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">Trending job titles</h3>
+            <h3 className="text-xl sm:text-2xl font-semibold text-[#424242] mb-4 sm:mb-6">Trending job titles</h3>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div className="space-y-3 sm:space-y-4">

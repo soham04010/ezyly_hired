@@ -1,3 +1,4 @@
+
 "use client";
 import React from 'react';
 import Footer from '@/components/Footer';
@@ -80,7 +81,7 @@ const About = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-4xl font-bold text-gray-900 mb-8">Our Mission</h2>
+                <h2 className="text-4xl font-bold text-[#424242] mb-8">Our Mission</h2>
                 <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                   At EzylyHired, we believe that finding the right talent should be easy, efficient, and effective. Our mission is to bridge the gap between exceptional professionals and organizations that value their skills, experience, and potential.
                 </p>
@@ -115,7 +116,7 @@ const About = () => {
         <div className="py-20 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Core Values</h2>
+              <h2 className="text-4xl font-bold text-[#424242] mb-6">Our Core Values</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 These fundamental principles guide everything we do and shape our relationships with clients and candidates.
               </p>
@@ -124,7 +125,7 @@ const About = () => {
               {values.map((value, index) => (
                 <div key={index} className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
                   <div className="mb-4">{value.icon}</div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">{value.title}</h3>
+                  <h3 className="text-xl font-semibold text-[#424242] mb-4">{value.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{value.description}</p>
                 </div>
               ))}
@@ -144,7 +145,7 @@ const About = () => {
                 />
               </div>
               <div>
-                <h2 className="text-4xl font-bold text-gray-900 mb-8">Our Services</h2>
+                <h2 className="text-4xl font-bold text-[#424242] mb-8">Our Services</h2>
                 <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                   We offer comprehensive recruitment solutions tailored to meet the diverse needs of modern businesses and professionals.
                 </p>
@@ -186,7 +187,7 @@ const About = () => {
         <div className="py-20 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Why Choose EzylyHired?</h2>
+              <h2 className="text-4xl font-bold text-[#424242] mb-6">Why Choose EzylyHired?</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 We go beyond traditional recruitment to deliver exceptional value to both employers and job seekers.
               </p>
@@ -194,21 +195,21 @@ const About = () => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="bg-white p-8 rounded-xl shadow-lg">
                 <Globe className="h-12 w-12 text-teal-600 mb-6" />
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Industry Expertise</h3>
+                <h3 className="text-2xl font-bold text-[#424242] mb-4">Industry Expertise</h3>
                 <p className="text-gray-600 leading-relaxed">
                   Deep knowledge across multiple industries including finance, technology, marketing, legal, and administrative sectors with specialized recruitment strategies for each.
                 </p>
               </div>
               <div className="bg-white p-8 rounded-xl shadow-lg">
                 <Users className="h-12 w-12 text-teal-600 mb-6" />
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Personalized Approach</h3>
+                <h3 className="text-2xl font-bold text-[#424242] mb-4">Personalized Approach</h3>
                 <p className="text-gray-600 leading-relaxed">
                   Every placement is unique. We take time to understand your specific needs, culture, and goals to ensure the perfect match between talent and opportunity.
                 </p>
               </div>
               <div className="bg-white p-8 rounded-xl shadow-lg">
                 <Award className="h-12 w-12 text-teal-600 mb-6" />
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Proven Results</h3>
+                <h3 className="text-2xl font-bold text-[#424242] mb-4">Proven Results</h3>
                 <p className="text-gray-600 leading-relaxed">
                   Our track record speaks for itself - high client satisfaction rates, successful long-term placements, and strong relationships built on trust and results.
                 </p>
@@ -220,7 +221,7 @@ const About = () => {
         {/* Call to Action Section */}
         <div className="py-20 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Ready to Get Started?</h2>
+            <h2 className="text-4xl font-bold text-[#424242] mb-6">Ready to Get Started?</h2>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
               Whether you're looking for exceptional talent or seeking your next career opportunity, 
               we're here to help you achieve your goals.

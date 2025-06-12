@@ -1,3 +1,4 @@
+
 "use client";
 import React from 'react';
 import Footer from '@/components/Footer';
@@ -67,7 +68,7 @@ const Contact = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
               {/* Contact Information */}
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-8">Get In Touch</h2>
+                <h2 className="text-3xl font-bold text-[#424242] mb-8">Get In Touch</h2>
                 <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                   We're here to help you connect with the right opportunities or find the perfect talent for your organization. Reach out to us through any of the following channels.
                 </p>
@@ -78,7 +79,7 @@ const Contact = () => {
                       <Phone className="h-6 w-6 text-teal-600" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900">Phone</h3>
+                      <h3 className="text-lg font-semibold text-[#424242]">Phone</h3>
                       <p className="text-gray-600">+1 (555) 123-4567</p>
                     </div>
                   </div>
@@ -88,7 +89,7 @@ const Contact = () => {
                       <Mail className="h-6 w-6 text-teal-600" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900">Email</h3>
+                      <h3 className="text-lg font-semibold text-[#424242]">Email</h3>
                       <p className="text-gray-600">info@ezylyhired.com</p>
                     </div>
                   </div>
@@ -98,7 +99,7 @@ const Contact = () => {
                       <MapPin className="h-6 w-6 text-teal-600" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900">Address</h3>
+                      <h3 className="text-lg font-semibold text-[#424242]">Address</h3>
                       <p className="text-gray-600">
                         123 Business Ave<br />
                         Suite 100<br />
@@ -110,7 +111,7 @@ const Contact = () => {
 
                 {/* Social Links */}
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Follow Us</h3>
+                  <h3 className="text-lg font-semibold text-[#424242] mb-4">Follow Us</h3>
                   <div className="flex space-x-4">
                     <div className="bg-gray-100 p-3 rounded-full hover:bg-gray-200 cursor-pointer transition-colors">
                       <Linkedin className="h-5 w-5 text-gray-600" />
@@ -130,7 +131,7 @@ const Contact = () => {
               
               {/* Contact Form */}
               <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h3>
+                <h3 className="text-2xl font-bold text-[#424242] mb-6">Send us a message</h3>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>

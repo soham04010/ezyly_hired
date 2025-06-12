@@ -10,7 +10,7 @@ const ConsultingSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           {/* Left Content */}
           <div className="order-2 lg:order-1">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-gray-900 mb-6 sm:mb-8 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-[#424242] mb-6 sm:mb-8 leading-tight">
               Consulting solutions to drive business impact
             </h2>
             
@@ -47,7 +47,7 @@ const ConsultingSection = () => {
               <Button className="bg-gray-900 hover:bg-gray-800 text-white px-6 sm:px-8 py-3 sm:py-6 text-base sm:text-lg font-medium rounded-full w-full sm:w-auto">
                 Find your consulting solution
               </Button>
-              <Button variant="outline" className="border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white px-6 sm:px-8 py-3 sm:py-6 text-base sm:text-lg font-medium rounded-full w-full sm:w-auto">
+              <Button variant="outline" className="border-2 border-gray-900 text-[#424242] hover:bg-gray-900 hover:text-white px-6 sm:px-8 py-3 sm:py-6 text-base sm:text-lg font-medium rounded-full w-full sm:w-auto">
                 Learn more
               </Button>
             </div>

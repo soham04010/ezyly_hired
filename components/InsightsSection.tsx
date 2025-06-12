@@ -47,7 +47,7 @@ const InsightsSection = () => {
                 />
               </div>
               <div className="p-4 sm:p-6">
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3 leading-tight">{insight.title}</h3>
+                <h3 className="text-lg sm:text-xl font-semibold text-[#424242] mb-2 sm:mb-3 leading-tight">{insight.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{insight.description}</p>
               </div>
             </div>

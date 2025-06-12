@@ -50,10 +50,10 @@ const TestimonialsSection = () => {
   return (
     <section id="TestimonialsSection" className="relative bg-gradient-to-br from-blue-50 via-white to-purple-50 py-12 sm:py-16 md:py-20 text-center overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 sm:mb-3">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#424242] mb-2 sm:mb-3 font-gilroy">
           What Do Our Clients Say About Us
         </h2>
-        <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-8 sm:mb-12 max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-8 sm:mb-12 max-w-2xl mx-auto font-gilroy">
           Don't just take our word for it - hear from our satisfied clients
         </p>
 
@@ -89,7 +89,7 @@ const TestimonialsSection = () => {
             </div>
           </div>
 
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 italic max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-8 transition-opacity duration-700 ease-in-out px-2">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 italic max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-8 transition-opacity duration-700 ease-in-out px-2 font-gilroy">
             "{testimonials[current].quote}"
           </p>
 
@@ -106,10 +106,10 @@ const TestimonialsSection = () => {
             ))}
           </div>
 
-          <div className="font-bold text-lg sm:text-xl text-gray-900 mb-1 sm:mb-2">
+          <div className="font-bold text-lg sm:text-xl text-[#424242] mb-1 sm:mb-2 font-gilroy">
             {testimonials[current].name}
           </div>
-          <div className="text-sm sm:text-base md:text-lg text-blue-600 font-medium">
+          <div className="text-sm sm:text-base md:text-lg text-blue-600 font-medium font-gilroy">
             {testimonials[current].title}
           </div>
 

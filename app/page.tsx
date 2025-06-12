@@ -12,19 +12,7 @@ import Footer from '@/components/Footer';
 import LoadingScreen from "@/components/LoadingScreen";
 
 const Index = () => {
-  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (isLoading) {
-    return <LoadingScreen />;
-  }
   return (
     <div className="min-h-screen bg-background">
       <HeroSection />
