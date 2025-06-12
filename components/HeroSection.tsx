@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 const HeroSection = () => {
   return (
@@ -37,10 +38,10 @@ const HeroSection = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
             <Link href="/contact">
-             <Button className="bg-red-600 hover:bg-red-700 text-white px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg font-medium rounded-full min-w-[160px] h-12 sm:h-14 font-gilroy">
-              Find a job
-             </Button>
-            </Link>
+  <Button className="cursor-pointer bg-red-600 hover:bg-red-700 text-white px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg font-medium rounded-full min-w-[160px] h-12 sm:h-14 font-gilroy">
+  Get Hired
+</Button>
+</Link>
             {/* <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-white px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg font-medium rounded-full bg-transparent min-w-[160px] h-12 sm:h-14 font-gilroy">
               Hire talent
             </Button> */}

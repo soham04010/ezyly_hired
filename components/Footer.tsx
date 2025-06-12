@@ -1,3 +1,4 @@
+
 "use client";
 import React from 'react';
 import { Facebook, Linkedin, Twitter, Youtube, Instagram } from 'lucide-react';
@@ -50,10 +51,22 @@ const Footer = () => {
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-6 lg:space-y-0">
             {/* Logo and Social */}
             <div className="flex flex-col space-y-4">
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-red-600 rounded flex items-center justify-center mr-3">
+              <div className="flex items-center space-x-4">
+                <div className="w-10 h-10 bg-red-600 rounded flex items-center justify-center">
                   <span className="text-white font-bold">EH</span>
                 </div>
+                <a 
+                  href="https://www.e-verify.gov/e-verify-employer-search" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:opacity-80 transition-opacity"
+                >
+                  <img 
+                    src="/E-Verify_Logo-2x.png" 
+                    alt="E-Verify" 
+                    className="h-8 w-auto"
+                  />
+                </a>
               </div>
               <div className="flex space-x-4">
                 <Facebook className="h-6 w-6 text-gray-400 hover:text-white cursor-pointer transition-colors" />
