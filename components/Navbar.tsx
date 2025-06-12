@@ -9,7 +9,7 @@ const navLinks = [
     label: "Services",
     dropdown: [
       { label: "Individual Services", href: "/services/individual" },
-      { label: "Service Description", href: "/services/description" },
+      // { label: "Service Description", href: "/services/description" },
       { label: "Plans", href: "/services/plans" },
     ],
   },
@@ -54,7 +54,7 @@ const Navbar = () => {
               <img
                 src={isWhite ? "/logo1.png" : "/logo (2).png"}
                 alt="Logo"
-                className="h- w- transition duration-300"
+                className="h-10 w- transition duration-300"
               />
             </a>
 
