@@ -8,7 +8,7 @@ const HeroSection = () => {
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full">
         <img 
-          src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&h=800&fit=crop" 
+          src="/banner.jpg" 
           alt="Professional woman with laptop" 
           className="w-full h-full object-cover object-center"
         />
