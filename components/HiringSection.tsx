@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Check } from 'lucide-react';
+import Link from 'next/link';
 
 const HiringSection = () => {
   return (
@@ -56,10 +57,13 @@ const HiringSection = () => {
                 </p>
               </div>
             </div>
-            
-            <Button className="cursor-pointer bg-gray-900 hover:bg-gray-800 text-white px-6 sm:px-8 py-3 sm:py-6 text-base sm:text-lg font-medium rounded-full w-full sm:w-auto font-gilroy">
-             Start My Job Search
-            </Button>
+            <Link href="/services/plans">
+              <Button className="cursor-pointer bg-gray-900 hover:bg-gray-800 text-white px-6 sm:px-8 py-3 sm:py-6 text-base sm:text-lg font-medium rounded-full w-full sm:w-auto font-gilroy">
+                Start My Job Search
+              </Button>
+            </Link>
+            <div className="mt-4 sm:mt-6">
+            </div>
           </div>
         </div>
       </div>

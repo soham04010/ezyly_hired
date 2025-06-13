@@ -1,6 +1,6 @@
-
 "use client";
 import React from 'react';
+import Link from 'next/link';
 import Footer from '@/components/Footer';
 import { Users, Target, Award, CheckCircle, Globe, Heart, Lightbulb, Shield } from 'lucide-react';
 
@@ -60,7 +60,6 @@ const services = [
 ];
 
 const About = () => {
-
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -227,17 +226,15 @@ const About = () => {
               we're here to help you achieve your goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg font-medium rounded-full transition-colors">
-                Hire Talent
-              </button>
-              <button className="border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-8 py-4 text-lg font-medium rounded-full transition-colors">
-                Find Jobs
-              </button>
+              <Link href="/contact">
+                <button className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg font-medium rounded-full transition-colors cursor-pointer">
+                  Hire Talent
+                </button>
+              </Link>
             </div>
           </div>
         </div>
       </main>
-      
       <Footer />
     </div>
   );

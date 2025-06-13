@@ -25,7 +25,7 @@ const CareerSection = () => {
           {/* Right Content */}
           <div className="order-1 lg:order-2">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-[#424242] mb-6 sm:mb-8 leading-tight">
-              Make the career move you want
+              Why Ezyly Hired Works
             </h2>
             
             <div className="space-y-4 sm:space-y-6 mb-6 sm:mb-8">
@@ -58,12 +58,12 @@ const CareerSection = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <Button className="bg-gray-900 hover:bg-gray-800 text-white px-6 sm:px-8 py-3 sm:py-6 text-base sm:text-lg font-medium rounded-full w-full sm:w-auto">
-                Get job matches
-              </Button>
-              <Button variant="outline" className="border-2 border-gray-900 text-[#424242] hover:bg-gray-900 hover:text-white px-6 sm:px-8 py-3 sm:py-6 text-base sm:text-lg font-medium rounded-full w-full sm:w-auto">
+              <Button className="cursor-pointer bg-gray-900 hover:bg-gray-800 text-white px-6 sm:px-8 py-3 sm:py-6 text-base sm:text-lg font-medium rounded-full w-full sm:w-auto">
                 Learn more
               </Button>
+              {/* <Button variant="outline" className="border-2 border-gray-900 text-[#424242] hover:bg-gray-900 hover:text-white px-6 sm:px-8 py-3 sm:py-6 text-base sm:text-lg font-medium rounded-full w-full sm:w-auto">
+                Learn more
+              </Button> */}
             </div>
           </div>
         </div>
