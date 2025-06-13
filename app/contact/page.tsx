@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 import Swal from "sweetalert2";
+import Link from 'next/link';
 
 const Contact = () => {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -80,7 +81,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-[#424242]">Phone</h3>
-                      <p className="text-gray-600">+1 (555) 123-4567</p>
+                      <p className="text-gray-600">+441200480208</p>
                     </div>
                   </div>
                   
@@ -101,9 +102,8 @@ const Contact = () => {
                     <div>
                       <h3 className="text-lg font-semibold text-[#424242]">Address</h3>
                       <p className="text-gray-600">
-                        123 Business Ave<br />
-                        Suite 100<br />
-                        New York, NY 10001
+                        Madison Ave,<br />
+                        New York USA<br />
                       </p>
                     </div>
                   </div>
@@ -114,17 +114,21 @@ const Contact = () => {
                   <h3 className="text-lg font-semibold text-[#424242] mb-4">Follow Us</h3>
                   <div className="flex space-x-4">
                     <div className="bg-gray-100 p-3 rounded-full hover:bg-gray-200 cursor-pointer transition-colors">
+                    <Link href="https://www.linkedin.com/company/ezyly-hired/">
                       <Linkedin className="h-5 w-5 text-gray-600" />
+                    </Link>
                     </div>
-                    <div className="bg-gray-100 p-3 rounded-full hover:bg-gray-200 cursor-pointer transition-colors">
+                    {/* <div className="bg-gray-100 p-3 rounded-full hover:bg-gray-200 cursor-pointer transition-colors">
                       <Twitter className="h-5 w-5 text-gray-600" />
-                    </div>
+                    </div> */}
                     <div className="bg-gray-100 p-3 rounded-full hover:bg-gray-200 cursor-pointer transition-colors">
+                      <Link href="https://www.instagram.com/ezylyhired?igsh=OTB6aTB3dXdwZW5h">
                       <Instagram className="h-5 w-5 text-gray-600" />
+                      </Link>
                     </div>
-                    <div className="bg-gray-100 p-3 rounded-full hover:bg-gray-200 cursor-pointer transition-colors">
+                    {/* <div className="bg-gray-100 p-3 rounded-full hover:bg-gray-200 cursor-pointer transition-colors">
                       <Facebook className="h-5 w-5 text-gray-600" />
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

@@ -17,7 +17,7 @@ const JobCategoriesSection = () => {
         { title: "Senior financial analyst", category: "left" },
         { title: "Bookkeeper", category: "right" }
       ],
-      learnMore: "Learn more about our Accounting and Finance hiring solutions",
+      learnMore: "learn more about our hiring solutions",
       images: [
         "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop",
         "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=200&fit=crop",
@@ -25,7 +25,7 @@ const JobCategoriesSection = () => {
       ]
     },
     {
-      name: "Technology",
+      name: "Information Technology",
       path: "/services/technology",
       description: "From software developers to IT managers, we'll bring you top candidates with in-demand skills and experience and help manage the hiring process for you.",
       jobs: [

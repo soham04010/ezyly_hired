@@ -1,4 +1,3 @@
-
 "use client";
 import React from 'react';
 import { Button } from '@/components/ui/button';
@@ -14,7 +13,7 @@ const Services = () => {
     {
       name: 'SILVER PLAN',
       price: '$2000',
-      description: 'Upfront (No Other Payments)',
+      description: 'Upfront',
       color: 'bg-gradient-to-br from-gray-400 to-gray-600',
       textColor: 'text-white',
       icon: CheckCircle,
@@ -33,7 +32,7 @@ const Services = () => {
     {
       name: 'GOLD PLAN',
       price: '$3000',
-      description: 'Upfront (No Other Payments)',
+      description: 'Upfront',
       color: 'bg-gradient-to-br from-yellow-400 to-yellow-600',
       textColor: 'text-[#424242]',
       icon: Star,
@@ -53,7 +52,7 @@ const Services = () => {
     {
       name: 'PLATINUM PLAN',
       price: '$4000',
-      description: 'Coming Soon',
+      description: 'Upfront',
       color: 'bg-gradient-to-br from-slate-600 to-slate-800',
       textColor: 'text-white',
       icon: Crown,
@@ -72,7 +71,7 @@ const Services = () => {
     {
       name: 'DIAMOND PLAN',
       price: '$10000',
-      description: 'Upfront (No Other Payments)',
+      description: 'Upfront',
       color: 'bg-gradient-to-br from-cyan-500 to-blue-600',
       textColor: 'text-white',
       icon: Diamond,
@@ -96,7 +95,6 @@ const Services = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white font-gilroy">
-      {/* Hero Section with Enhanced Gradient */}
       <section className="bg-gradient-to-r from-slate-900 via-blue-900 to-teal-900 py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
@@ -112,12 +110,10 @@ const Services = () => {
             </p>
           </div>
         </div>
-        {/* Decorative elements */}
         <div className="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
         <div className="absolute bottom-10 right-10 w-32 h-32 bg-cyan-500/20 rounded-full blur-2xl"></div>
       </section>
 
-      {/* Plans Grid with Enhanced Design */}
       <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
@@ -157,7 +153,7 @@ const Services = () => {
                         {plan.price}
                       </div>
                       <div className="text-sm text-gray-600 font-medium font-gilroy">
-                        {plan.description}
+                        <strong>{plan.description}</strong>
                       </div>
                     </div>
                     
@@ -173,7 +169,7 @@ const Services = () => {
                     </div>
                     
                     <Button 
-                      className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white py-3 text-lg font-semibold rounded-lg shadow-lg transform transition-all duration-200 hover:shadow-xl font-gilroy"
+                      className="cursor-pointer w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white py-3 text-lg font-semibold rounded-lg shadow-lg transform transition-all duration-200 hover:shadow-xl font-gilroy"
                       onClick={() => router.push('/contact')}
                     >
                       Choose Plan
@@ -279,7 +275,7 @@ const Services = () => {
               Choose the plan that best fits your needs and let us help you secure your dream job with our proven track record of success.
             </p>
             <Button 
-              className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-12 py-4 text-xl font-semibold rounded-full shadow-lg transform transition-all duration-200 hover:scale-105 hover:shadow-xl font-gilroy"
+              className="cursor-pointer bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-12 py-4 text-xl font-semibold rounded-full shadow-lg transform transition-all duration-200 hover:scale-105 hover:shadow-xl font-gilroy"
               onClick={() => router.push('/contact')}
             >
               Contact Us Today

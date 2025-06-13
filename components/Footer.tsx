@@ -1,35 +1,38 @@
-
 "use client";
 import React from 'react';
 import { Facebook, Linkedin, Twitter, Youtube, Instagram } from 'lucide-react';
+import Link from 'next/link';
 
 const Footer = () => {
-  const footerSections = [
-    {
-      title: "Services",
-      links: ["Browse Jobs", "Contract Talent", "Permanent Talent", "Consulting Solutions"]
-    },
-    {
-      title: "Areas of Expertise", 
-      links: ["Finance & Accounting", "Technology", "Marketing & Creative", "Administrative & Customer Support", "Legal"]
-    },
-    {
-      title: "Resources & Tools",
-      links: ["Discover Insights", "Invoice", "Job Directory", "Salary Guide", "Time Reports", "Contact Us"]
-    },
-    {
-      title: "About",
-      links: ["About Ezyly Hired", "Leadership", "Careers With Us", "Locations", "Investor Center", "Press", "Our Brands", "Supplier Relations"]
-    }
+  const footerSections: any[] = [
+    // {
+    //   title: "Services",
+    //   links: ["Browse Jobs", "Contract Talent", "Permanent Talent", "Consulting Solutions"]
+    // },
+    // {
+    //   title: "Areas of Expertise", 
+    //   links: ["Finance & Accounting", "Technology", "Marketing & Creative", "Administrative & Customer Support", "Legal"]
+    // },
+    // {
+    //   title: "Resources & Tools",
+    //   links: ["Discover Insights", "Invoice", "Job Directory", "Salary Guide", "Time Reports", "Contact Us"]
+    // },
+    // {
+    //   title: "About",
+    //   links: ["About Ezyly Hired", "Leadership", "Careers With Us", "Locations", "Investor Center", "Press", "Our Brands", "Supplier Relations"]
+    // }
   ];
 
-  const legalLinks = ["Fraud Alert", "Government Notice", "Privacy Notice", "Terms of Use"];
+  const legalLinks = [
+    { label: "Privacy Notice", path: "/PrivacyNotice" },
+    { label: "Terms of Use", path: "/TermsOfUse" }
+  ];
 
   return (
     <footer className="bg-gray-800 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {footerSections.map((section, index) => (
             <div key={index}>
               <h3 className="text-lg font-semibold mb-6">{section.title}</h3>
@@ -43,9 +46,8 @@ const Footer = () => {
                 ))}
               </ul>
             </div>
-          ))}
-        </div>
-        
+          ))} 
+        </div> */}
         {/* Bottom Section */}
         <div className="border-t border-gray-700 pt-8">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-6 lg:space-y-0">
@@ -69,11 +71,15 @@ const Footer = () => {
                 </a>
               </div>
               <div className="flex space-x-4">
-                <Facebook className="h-6 w-6 text-gray-400 hover:text-white cursor-pointer transition-colors" />
-                <Linkedin className="h-6 w-6 text-gray-400 hover:text-white cursor-pointer transition-colors" />
-                <Twitter className="h-6 w-6 text-gray-400 hover:text-white cursor-pointer transition-colors" />
-                <Youtube className="h-6 w-6 text-gray-400 hover:text-white cursor-pointer transition-colors" />
-                <Instagram className="h-6 w-6 text-gray-400 hover:text-white cursor-pointer transition-colors" />
+                {/* <Facebook className="h-6 w-6 text-gray-400 hover:text-white cursor-pointer transition-colors" /> */}
+                <Link href="https://www.linkedin.com/company/ezyly-hired">
+                  <Linkedin className="h-6 w-6 text-gray-400 hover:text-white cursor-pointer transition-colors" />
+                </Link>
+                {/* <Twitter className="h-6 w-6 text-gray-400 hover:text-white cursor-pointer transition-colors" />
+                <Youtube className="h-6 w-6 text-gray-400 hover:text-white cursor-pointer transition-colors" /> */}
+                <Link href="https://www.instagram.com/ezylyhired?igsh=OTB6aTB3dXdwZW5h">
+                  <Instagram className="h-6 w-6 text-gray-400 hover:text-white cursor-pointer transition-colors" />
+                </Link>
               </div>
             </div>
             
@@ -87,27 +93,27 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          
+
           {/* Legal Links */}
           <div className="mt-8 pt-6 border-t border-gray-700">
             <div className="flex flex-wrap items-center justify-between">
               <div className="flex flex-wrap space-x-6 mb-4 lg:mb-0">
                 {legalLinks.map((link, index) => (
-                  <a key={index} href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
-                    {link}
-                  </a>
+                  <Link key={index} href={link.path} className="text-gray-400 hover:text-white text-sm transition-colors">
+                    {link.label}
+                  </Link>
                 ))}
               </div>
-              <div className="text-gray-400 text-sm">
+              {/* <div className="text-gray-400 text-sm">
                 <p>© 2025 Ezyly Hired Inc.</p>
                 <p className="mt-1">An Equal Opportunity Employer M/F/Disability/Veterans.</p>
-              </div>
+              </div> */}
             </div>
-            
+
             <div className="mt-4">
-              <button className="text-gray-400 hover:text-white text-sm transition-colors">
+              {/* <button className="text-gray-400 hover:text-white text-sm transition-colors">
                 Cookies Settings
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

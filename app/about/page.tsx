@@ -29,34 +29,36 @@ const values = [
 
 const achievements = [
   {
-    number: "500+",
+    number: "100%",
     label: "Placements",
     description: "Successful placements across multiple industries."
   },
   {
-    number: "98%",
+    number: "100%",
     label: "Satisfaction",
     description: "Client satisfaction rate with our recruitment process."
   },
   {
-    number: "10+",
+    number: "6+",
     label: "Years Experience",
     description: "A decade of expertise in talent acquisition."
   },
   {
     number: "100+",
     label: "Clients",
-    description: "Trusted by over 100 companies and organizations."
+    description: "Trusted by over 100+ companies and Candidates."
   }
 ];
 
 const services = [
-  "Permanent & Contract Staffing",
-  "Executive Search & Headhunting",
-  "Talent Mapping & Market Insights",
-  "Employer Branding Solutions",
-  "Candidate Screening & Assessment",
-  "Onboarding Support"
+  "Profile Enhancement & Marketing",
+  "Interview Support to Candidate",
+  "Resume Making & Grooming",
+  "Resume Understanding",
+  "Training & Interview Preparation",
+  "Assessments Upto 4 Hours",
+  "Assessments More Than 4 Hours",
+  "Personal Career Counseling",
 ];
 
 const About = () => {
@@ -101,7 +103,7 @@ const About = () => {
                   <div className="flex items-center space-x-3">
                     <Users className="h-8 w-8" />
                     <div>
-                      <div className="text-2xl font-bold">500+</div>
+                      <div className="text-2xl font-bold">100%</div>
                       <div className="text-sm opacity-90">Successful Placements</div>
                     </div>
                   </div>
