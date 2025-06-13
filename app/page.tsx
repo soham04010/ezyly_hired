@@ -9,6 +9,8 @@ import JobCategoriesSection from '@/components/JobCategoriesSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import AccoladesSection from '@/components/AccoladesSection';
 import Footer from '@/components/Footer';
+import TermsOfUse from './TermsOfUse/page';
+import PrivacyNotice from './PrivacyNotice/page';
 import LoadingScreen from "@/components/LoadingScreen";
 
 const Index = () => {
