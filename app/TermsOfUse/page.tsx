@@ -24,10 +24,10 @@ const TermsOfUse = () => {
             Welcome to Ezylyhired.com. These Terms and Conditions govern your use of our website and services.
           </p>
           <p className="text-gray-600 leading-relaxed mt-4">
-            Welcome to Ezylyhired.com ("Ezylyhired", "we", "our", or "us"). These Terms and Conditions ("Terms") govern your use of our website (www.ezylyhired.com) and services provided to job seekers in the IT industry.
+            Welcome to Ezylyhired.com ('Ezylyhired', 'we', 'our', or 'us'). These Terms and Conditions ('Terms') govern your use of our website (www.ezylyhired.com) and services provided to job seekers in the IT industry.
           </p>
           <p className="text-gray-600 leading-relaxed mt-4">
-            By using our platform or services, you ("you", "candidate", or "user") agree to be bound by these Terms. Please read them carefully.
+            By using our platform or services, you ('you', 'candidate', or 'user') agree to be bound by these Terms. Please read them carefully.
           </p>
         </div>
 
@@ -119,7 +119,7 @@ const TermsOfUse = () => {
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">9. Changes to These Terms</h2>
             <p className="text-gray-700 leading-relaxed">
-              We may update these Terms periodically. Changes will be posted on our website with an updated "Effective Date." By continuing to use our services after changes are posted, you agree to the revised Terms.
+              We may update these Terms periodically. Changes will be posted on our website with an updated 'Effective Date.' By continuing to use our services after changes are posted, you agree to the revised Terms.
             </p>
           </section>
 
