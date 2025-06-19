@@ -1,3 +1,4 @@
+
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
@@ -25,6 +26,7 @@ const Navbar = () => {
   const isHome = pathname === "/";
 
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -38,9 +40,11 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      // Only close desktop dropdown when clicking outside
       if (
         dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
+        !dropdownRef.current.contains(event.target as Node) &&
+        !mobileMenuRef.current?.contains(event.target as Node)
       ) {
         setActiveDropdown(null);
       }
@@ -136,7 +140,7 @@ const Navbar = () => {
 
         {/* Mobile nav */}
         {isOpen && (
-          <div className="md:hidden mt-4 space-y-4 bg-white rounded-md p-4 shadow-lg">
+          <div ref={mobileMenuRef} className="md:hidden mt-4 space-y-4 bg-white rounded-md p-4 shadow-lg">
             {navLinks.map(({ label, href, dropdown }) => (
               <div key={label} className="space-y-2">
                 {!dropdown ? (
