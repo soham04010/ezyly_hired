@@ -1,69 +1,68 @@
 "use client";
-import React from "react";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
+import React from 'react';
+// import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+// import { Header } from '@radix-ui/react-accordion';
 
-type Blog = {
-  id: number;
-  title: string;
-  slug: string;
-  image: string;
-  date: string;
-  excerpt: string;
-};
+const BlogPage: React.FC = () => {
+  const samplePosts = [
+    {
+      id: 1,
+      title: "The Future of Remote Work",
+      excerpt: "Exploring how remote work is changing the landscape of modern employment.",
+      date: "December 15, 2024",
+      author: "Jane Smith"
+    },
+    {
+      id: 2,
+      title: "Interview Tips for Success",
+      excerpt: "Essential strategies to help you ace your next job interview.",
+      date: "December 10, 2024",
+      author: "John Doe"
+    },
+    {
+      id: 3,
+      title: "Building Company Culture",
+      excerpt: "How to create and maintain a positive workplace environment.",
+      date: "December 5, 2024",
+      author: "Sarah Johnson"
+    }
+  ];
 
-const dummyBlogs: Blog[] = [
-  {
-    id: 1,
-    title: "Top 5 Hiring Trends in 2025",
-    slug: "top-5-hiring-trends-2025",
-    image: "/blogs/hiring-trends.jpg",
-    date: "June 5, 2025",
-    excerpt: "Discover the latest hiring trends shaping the future of recruitment and what companies are doing to stay ahead.",
-  },
-  {
-    id: 2,
-    title: "How to Build a Strong Resume",
-    slug: "how-to-build-a-strong-resume",
-    image: "/blogs/strong-resume.jpg",
-    date: "May 28, 2025",
-    excerpt: "A guide to crafting a resume that stands out from the crowd and lands you more interviews.",
-  },
-  {
-    id: 3,
-    title: "Remote Work: Pros & Cons",
-    slug: "remote-work-pros-and-cons",
-    image: "/blogs/remote-work.jpg",
-    date: "May 15, 2025",
-    excerpt: "Understand the advantages and challenges of remote work and how to make it effective for your team.",
-  },
-];
-
-const BlogsPage = () => {
   return (
-    <main className="max-w-7xl mx-auto px-4 py-16 bg-background text-foreground">
-      <h1 className="text-3xl md:text-4xl font-bold mb-12 text-center">Our Latest Blogs</h1>
+    <div className="flex flex-col min-h-screen">
+      <main className="flex-grow py-12 sm:py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl sm:text-5xl font-bold text-gray-800">Our Blog</h1>
+            <p className="mt-4 text-lg text-gray-600">
+              Stay updated with the latest news, insights, and articles.
+            </p>
+          </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {dummyBlogs.map((blog) => (
-          <Link key={blog.id} href={`/blogs/${blog.slug}`}>
-            <Card className="hover:shadow-lg transition-shadow duration-200 rounded-2xl overflow-hidden bg-card text-card-foreground">
-              <img
-                src={blog.image}
-                alt={blog.title}
-                className="w-full h-48 object-cover"
-              />
-              <CardContent className="p-4">
-                <p className="text-sm text-muted-foreground mb-1">{blog.date}</p>
-                <h2 className="text-lg font-semibold line-clamp-2">{blog.title}</h2>
-                <p className="text-sm mt-2 text-muted-foreground line-clamp-3">{blog.excerpt}</p>
-              </CardContent>
-            </Card>
-          </Link>
-        ))}
-      </div>
-    </main>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {samplePosts.map((post) => (
+              <article key={post.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <div className="p-6">
+                  <h2 className="text-xl font-bold text-gray-900 mb-3 hover:text-red-600 transition-colors">
+                    {post.title}
+                  </h2>
+                  <p className="text-gray-600 mb-4 leading-relaxed">
+                    {post.excerpt}
+                  </p>
+                  <div className="flex items-center justify-between text-sm text-gray-500">
+                    <span>By {post.author}</span>
+                    <span>{post.date}</span>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </main>
+      <Footer />
+    </div>
   );
 };
 
-export default BlogsPage;
+export default BlogPage;

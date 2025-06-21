@@ -2,6 +2,7 @@
 import React from 'react';
 import { Facebook, Linkedin, Twitter, Youtube, Instagram } from 'lucide-react';
 import Link from 'next/link';
+// import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const footerSections: any[] = [
@@ -48,14 +49,15 @@ const Footer = () => {
             </div>
           ))} 
         </div> */}
+        
         {/* Bottom Section */}
         <div className="border-t border-gray-700 pt-8">
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-6 lg:space-y-0">
-            {/* Logo and Social */}
-            <div className="flex flex-col space-y-4">
+          <div className="flex flex-col items-center space-y-6">
+            {/* Logo and Social - Centered */}
+            <div className="flex flex-col items-center space-y-4">
               <div className="flex items-center space-x-4">
-                <div className="w-10 h-10 bg-red-600 rounded flex items-center justify-center">
-                  <span className="text-white font-bold">EH</span>
+                <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-lg">EH</span>
                 </div>
                 <a 
                   href="https://www.e-verify.gov/e-verify-employer-search" 
@@ -66,44 +68,45 @@ const Footer = () => {
                   <img 
                     src="/E-Verify_Logo-2x.png" 
                     alt="E-Verify" 
-                    className="h-8 w-auto"
+                    className="h-10 w-auto"
                   />
                 </a>
               </div>
-              <div className="flex space-x-4">
+              
+              {/* Social Media Icons */}
+              <div className="flex space-x-6">
                 {/* <Facebook className="h-6 w-6 text-gray-400 hover:text-white cursor-pointer transition-colors" /> */}
-                <Link href="https://www.linkedin.com/company/ezyly-hired">
-                  <Linkedin className="h-6 w-6 text-gray-400 hover:text-white cursor-pointer transition-colors" />
+                <Link href="https://www.linkedin.com/company/ezyly-hired" legacyBehavior>
+                  <a target="_blank" rel="noopener noreferrer">
+                    <Linkedin className="h-6 w-6 text-gray-400 hover:text-white cursor-pointer transition-colors" />
+                  </a>
                 </Link>
                 {/* <Twitter className="h-6 w-6 text-gray-400 hover:text-white cursor-pointer transition-colors" />
                 <Youtube className="h-6 w-6 text-gray-400 hover:text-white cursor-pointer transition-colors" /> */}
-                <Link href="https://www.instagram.com/ezylyhired?igsh=OTB6aTB3dXdwZW5h">
-                  <Instagram className="h-6 w-6 text-gray-400 hover:text-white cursor-pointer transition-colors" />
+                <Link href="https://www.instagram.com/ezylyhired?igsh=OTB6aTB3dXdwZW5h" legacyBehavior>
+                  <a target="_blank" rel="noopener noreferrer">
+                    <Instagram className="h-6 w-6 text-gray-400 hover:text-white cursor-pointer transition-colors" />
+                  </a>
                 </Link>
-              </div>
-            </div>
-            
-            {/* Region Selector */}
-            <div className="flex flex-col items-end space-y-4">
-              <div className="text-right">
-                <div className="text-lg font-medium mb-2">United States (English)</div>
-                <button className="border border-gray-600 rounded-full px-6 py-2 text-sm hover:bg-gray-700 transition-colors">
-                  Select a region and language →
-                </button>
               </div>
             </div>
           </div>
 
           {/* Legal Links */}
           <div className="mt-8 pt-6 border-t border-gray-700">
-            <div className="flex flex-wrap items-center justify-between">
-              <div className="flex flex-wrap space-x-6 mb-4 lg:mb-0">
+            <div className="flex flex-col items-center space-y-4">
+              <div className="flex flex-wrap justify-center space-x-6">
                 {legalLinks.map((link, index) => (
                   <Link key={index} href={link.path} className="text-gray-400 hover:text-white text-sm transition-colors">
                     {link.label}
                   </Link>
                 ))}
               </div>
+              
+              <div className="text-gray-400 text-sm text-center">
+                <p>© 2025 EzylyHired. All rights reserved.</p>
+              </div>
+              
               {/* <div className="text-gray-400 text-sm">
                 <p>© 2025 Ezyly Hired Inc.</p>
                 <p className="mt-1">An Equal Opportunity Employer M/F/Disability/Veterans.</p>
