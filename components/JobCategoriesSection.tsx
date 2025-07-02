@@ -36,7 +36,7 @@ const JobCategoriesSection = () => {
         { title: "Full-stack developer", category: "left" },
         { title: "Cybersecurity specialist", category: "right" }
       ],
-      learnMore: "Learn more about our Technology hiring solutions",
+      learnMore: "Learn more about our hiring solutions",
       images: [
         "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop",
         "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=400&h=200&fit=crop",
@@ -55,7 +55,7 @@ const JobCategoriesSection = () => {
         { title: "Production artist", category: "left" },
         { title: "Marketing manager", category: "right" }
       ],
-      learnMore: "Learn more about our Marketing and Creative hiring solutions",
+      learnMore: "learn more about our hiring solutions",
       images: [
         "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=300&fit=crop",
         "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=400&h=200&fit=crop",
