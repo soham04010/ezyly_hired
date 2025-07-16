@@ -105,7 +105,7 @@ const IndividualServices = () => {
                   </div>
                   
                   <CardHeader className="pb-4">
-                    <CardTitle className="text-xl font-bold text-gray-900 mb-2">
+                    <CardTitle className="text-xl font-bold text-[#424242] mb-2">
                       {service.title}
                     </CardTitle>
                   </CardHeader>
@@ -117,7 +117,7 @@ const IndividualServices = () => {
                           <Clock className="w-4 h-4 mr-2" />
                           Unit / Duration:
                         </span>
-                        <span className="font-medium text-gray-900">{service.duration}</span>
+                        <span className="font-medium text-[#424242]">{service.duration}</span>
                       </div>
                       
                       <div className="flex items-center justify-between text-sm">
@@ -125,7 +125,7 @@ const IndividualServices = () => {
                           <User className="w-4 h-4 mr-2" />
                           Quantity:
                         </span>
-                        <span className="font-medium text-gray-900">{service.quantity}</span>
+                        <span className="font-medium text-[#424242]">{service.quantity}</span>
                       </div>
                       
                       <div className="flex items-center justify-between text-sm">
@@ -133,12 +133,12 @@ const IndividualServices = () => {
                           <DollarSign className="w-4 h-4 mr-2" />
                           Price:
                         </span>
-                        <span className="font-medium text-gray-900">{service.price}</span>
+                        <span className="font-medium text-[#424242]">{service.price}</span>
                       </div>
                       
                       <div className="border-t pt-3">
                         <div className="flex items-center justify-between">
-                          <span className="font-semibold text-gray-900">Subtotal:</span>
+                          <span className="font-semibold text-[#424242]">Subtotal:</span>
                           <span className="text-xl font-bold text-teal-600">{service.subtotal}</span>
                         </div>
                       </div>
@@ -154,7 +154,7 @@ const IndividualServices = () => {
         <div className="bg-white py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-4xl font-bold text-[#424242] mb-6">
                 We are best at what we do...
               </h2>
             </div>
@@ -172,7 +172,7 @@ const IndividualServices = () => {
                 </div>
                 
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                  <h3 className="text-2xl font-bold text-[#424242] mb-6">
                     Just graduated and racing against the 90-day OPT clock?
                   </h3>
                   

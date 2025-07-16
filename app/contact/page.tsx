@@ -1,3 +1,4 @@
+
 "use client";
 import React from 'react';
 import Footer from '@/components/Footer';
@@ -6,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 import Swal from "sweetalert2";
+import Link from 'next/link';
 
 const Contact = () => {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -67,7 +69,7 @@ const Contact = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
               {/* Contact Information */}
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-8">Get In Touch</h2>
+                <h2 className="text-3xl font-bold text-[#424242] mb-8">Get In Touch</h2>
                 <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                   We're here to help you connect with the right opportunities or find the perfect talent for your organization. Reach out to us through any of the following channels.
                 </p>
@@ -78,8 +80,8 @@ const Contact = () => {
                       <Phone className="h-6 w-6 text-teal-600" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900">Phone</h3>
-                      <p className="text-gray-600">+1 (555) 123-4567</p>
+                      <h3 className="text-lg font-semibold text-[#424242]">Phone</h3>
+                      <p className="text-gray-600">+441200480208</p>
                     </div>
                   </div>
                   
@@ -88,7 +90,7 @@ const Contact = () => {
                       <Mail className="h-6 w-6 text-teal-600" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900">Email</h3>
+                      <h3 className="text-lg font-semibold text-[#424242]">Email</h3>
                       <p className="text-gray-600">info@ezylyhired.com</p>
                     </div>
                   </div>
@@ -98,11 +100,10 @@ const Contact = () => {
                       <MapPin className="h-6 w-6 text-teal-600" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900">Address</h3>
+                      <h3 className="text-lg font-semibold text-[#424242]">Address</h3>
                       <p className="text-gray-600">
-                        123 Business Ave<br />
-                        Suite 100<br />
-                        New York, NY 10001
+                        Madison Ave,<br />
+                        New York USA<br />
                       </p>
                     </div>
                   </div>
@@ -110,27 +111,31 @@ const Contact = () => {
 
                 {/* Social Links */}
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Follow Us</h3>
+                  <h3 className="text-lg font-semibold text-[#424242] mb-4">Follow Us</h3>
                   <div className="flex space-x-4">
                     <div className="bg-gray-100 p-3 rounded-full hover:bg-gray-200 cursor-pointer transition-colors">
+                    <Link href="https://www.linkedin.com/company/ezyly-hired/">
                       <Linkedin className="h-5 w-5 text-gray-600" />
+                    </Link>
                     </div>
-                    <div className="bg-gray-100 p-3 rounded-full hover:bg-gray-200 cursor-pointer transition-colors">
+                    {/* <div className="bg-gray-100 p-3 rounded-full hover:bg-gray-200 cursor-pointer transition-colors">
                       <Twitter className="h-5 w-5 text-gray-600" />
-                    </div>
+                    </div> */}
                     <div className="bg-gray-100 p-3 rounded-full hover:bg-gray-200 cursor-pointer transition-colors">
+                      <Link href="https://www.instagram.com/ezylyhired?igsh=OTB6aTB3dXdwZW5h">
                       <Instagram className="h-5 w-5 text-gray-600" />
+                      </Link>
                     </div>
-                    <div className="bg-gray-100 p-3 rounded-full hover:bg-gray-200 cursor-pointer transition-colors">
+                    {/* <div className="bg-gray-100 p-3 rounded-full hover:bg-gray-200 cursor-pointer transition-colors">
                       <Facebook className="h-5 w-5 text-gray-600" />
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
               
               {/* Contact Form */}
               <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h3>
+                <h3 className="text-2xl font-bold text-[#424242] mb-6">Send us a message</h3>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>

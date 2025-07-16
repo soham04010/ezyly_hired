@@ -1,5 +1,6 @@
+
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 
@@ -9,12 +10,12 @@ const navLinks = [
     label: "Services",
     dropdown: [
       { label: "Individual Services", href: "/services/individual" },
-      // { label: "Service Description", href: "/services/description" },
       { label: "Plans", href: "/services/plans" },
     ],
   },
+  { label: "Testimonial", href: "/#TestimonialsSection" },
+  // { label: "Blogs", href: "/blogs" },
   { label: "Contact Us", href: "/contact" },
-  { label: "Testimonial", href: "/#TestimonialsSection" }, // Correct href added
 ];
 
 const Navbar = () => {
@@ -23,6 +24,9 @@ const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const pathname = usePathname();
   const isHome = pathname === "/";
+
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -33,6 +37,23 @@ const Navbar = () => {
       setIsScrolled(true);
     }
   }, [isHome]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      // Only close desktop dropdown when clicking outside
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node) &&
+        !mobileMenuRef.current?.contains(event.target as Node)
+      ) {
+        setActiveDropdown(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const toggleDropdown = (label: string) => {
     setActiveDropdown(activeDropdown === label ? null : label);
@@ -48,20 +69,22 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo and nav links on the left side */}
           <div className="flex items-center gap-10">
             <a href="/" className="flex items-center">
               <img
                 src={isWhite ? "/logo1.png" : "/logo (2).png"}
                 alt="Logo"
-                className="h-10 w- transition duration-300"
+                className="h-10 w-auto transition duration-300"
               />
             </a>
 
-            {/* Desktop nav links */}
             <nav className="hidden md:flex items-center gap-8">
               {navLinks.map(({ label, href, dropdown }) => (
-                <div key={label} className="relative group">
+                <div
+                  key={label}
+                  className="relative group"
+                  ref={label === "Services" ? dropdownRef : null}
+                >
                   {!dropdown ? (
                     <a
                       href={href}
@@ -117,7 +140,7 @@ const Navbar = () => {
 
         {/* Mobile nav */}
         {isOpen && (
-          <div className="md:hidden mt-4 space-y-4 bg-white rounded-md p-4 shadow-lg">
+          <div ref={mobileMenuRef} className="md:hidden mt-4 space-y-4 bg-white rounded-md p-4 shadow-lg">
             {navLinks.map(({ label, href, dropdown }) => (
               <div key={label} className="space-y-2">
                 {!dropdown ? (

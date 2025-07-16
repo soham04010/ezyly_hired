@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Check } from 'lucide-react';
+import Link from 'next/link';
 
 const HiringSection = () => {
   return (
@@ -24,8 +25,8 @@ const HiringSection = () => {
           
           {/* Right Content */}
           <div className="order-1 lg:order-2">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-gray-900 mb-6 sm:mb-8 leading-tight">
-              Find your next hire
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-[#424242] mb-6 sm:mb-8 leading-tight">
+              Get Hired Within EAD Period
             </h2>
             
             <div className="space-y-4 sm:space-y-6 mb-6 sm:mb-8">
@@ -34,7 +35,7 @@ const HiringSection = () => {
                   <Check className="h-3 w-3 sm:h-4 sm:w-4 text-red-600" />
                 </div>
                 <p className="text-gray-700 text-base sm:text-lg">
-                  Preview recruiter-assessed and AI-matched candidates
+                Speak with a recruiter who understands your goals and the urgency of your timeline.
                 </p>
               </div>
               
@@ -43,7 +44,7 @@ const HiringSection = () => {
                   <Check className="h-3 w-3 sm:h-4 sm:w-4 text-red-600" />
                 </div>
                 <p className="text-gray-700 text-base sm:text-lg">
-                  Book a consultation with one of our recruiters to discuss your hiring needs
+                  Get personalized support—from profile building to interview prep and job placement.
                 </p>
               </div>
               
@@ -52,14 +53,17 @@ const HiringSection = () => {
                   <Check className="h-3 w-3 sm:h-4 sm:w-4 text-red-600" />
                 </div>
                 <p className="text-gray-700 text-base sm:text-lg">
-                  Get dedicated expert support at every step of the way
+                  Apply to exclusive roles with employers actively hiring international graduates.
                 </p>
               </div>
             </div>
-            
-            <Button className="bg-gray-900 hover:bg-gray-800 text-white px-6 sm:px-8 py-3 sm:py-6 text-base sm:text-lg font-medium rounded-full w-full sm:w-auto">
-              Preview candidates
-            </Button>
+            <Link href="/services/plans">
+              <Button className="cursor-pointer bg-gray-900 hover:bg-gray-800 text-white px-6 sm:px-8 py-3 sm:py-6 text-base sm:text-lg font-medium rounded-full w-full sm:w-auto font-gilroy">
+                Start My Job Search
+              </Button>
+            </Link>
+            <div className="mt-4 sm:mt-6">
+            </div>
           </div>
         </div>
       </div>

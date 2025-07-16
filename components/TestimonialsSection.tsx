@@ -1,6 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
+import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 
 export const testimonials = [
   {
@@ -31,125 +33,111 @@ export const testimonials = [
 
 const TestimonialsSection = () => {
   const [current, setCurrent] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const next = () => {
-    setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
-  };
+  const handleSetCurrent = useCallback((index: number) => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrent(index);
+    setTimeout(() => setIsTransitioning(false), 500); // Match transition duration
+  }, [isTransitioning]);
 
-  const prev = () => {
-    setCurrent((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
-  };
+  const next = useCallback(() => {
+    handleSetCurrent((current + 1) % testimonials.length);
+  }, [current, handleSetCurrent]);
+
+  const prev = useCallback(() => {
+    handleSetCurrent((current - 1 + testimonials.length) % testimonials.length);
+  }, [current, handleSetCurrent]);
 
   useEffect(() => {
     const timer = setInterval(() => {
       next();
     }, 6000); // auto-scroll every 6 seconds
     return () => clearInterval(timer);
-  }, []);
+  }, [next]);
+
+  const currentTestimonial = testimonials[current];
 
   return (
-    <section id="TestimonialsSection" className="relative bg-gradient-to-br from-blue-50 via-white to-purple-50 py-12 sm:py-16 md:py-20 text-center overflow-hidden">
+    <section id="TestimonialsSection" className="bg-gradient-to-br from-slate-50 via-gray-50 to-sky-100 py-16 sm:py-20 md:py-24 text-center overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 sm:mb-3">
-          What Do Our Clients Say About Us
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 mb-4">
+          What Our Clients Say
         </h2>
-        <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-8 sm:mb-12 max-w-2xl mx-auto">
-          Don't just take our word for it - hear from our satisfied clients
+        <p className="text-lg sm:text-xl text-slate-600 mb-12 sm:mb-16 max-w-2xl mx-auto">
+          Real stories from satisfied partners who trust High Wages.
         </p>
 
-        {/* Floating avatars - hidden on mobile for cleaner look */}
-        <div className="hidden sm:flex absolute inset-x-0 top-16 justify-center gap-4 md:gap-6 opacity-20 blur-sm pointer-events-none">
-          {testimonials.map((t, i) => (
-            <img
-              key={i}
-              src={t.image}
-              alt={t.name}
-              className={`w-12 h-12 md:w-16 md:h-16 rounded-full object-cover grayscale border-2 border-white shadow-lg transition-all duration-500 ${
-                i === current ? "scale-125 opacity-60 blur-0" : ""
-              }`}
-            />
-          ))}
-        </div>
+        <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-2xl p-8 sm:p-10 md:p-12 relative z-10 border border-gray-100">
+          <Quote className="absolute top-6 left-6 sm:top-8 sm:left-8 w-16 h-16 sm:w-20 sm:h-20 text-slate-100 transform -translate-x-1/4 -translate-y-1/4" />
+          
+          <div className={`transition-opacity duration-500 ease-in-out ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
+            <div className="flex flex-col items-center text-center">
+              <Avatar className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mb-6 border-4 border-white shadow-lg">
+                <AvatarImage src={currentTestimonial.image} alt={currentTestimonial.name} />
+                <AvatarFallback>{currentTestimonial.name.substring(0, 1)}</AvatarFallback>
+              </Avatar>
 
-        {/* Testimonial Box */}
-        <div className="max-w-3xl mx-auto bg-white rounded-2xl sm:rounded-3xl shadow-xl p-6 sm:p-8 md:p-10 relative z-10 transition-all duration-700 ease-in-out border border-gray-100">
-          {/* Quote Icon */}
-          <div className="flex justify-center mb-4 sm:mb-6">
-            <Quote className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-blue-500 opacity-50" />
-          </div>
+              <h3 className="font-semibold text-xl sm:text-2xl text-slate-800 mb-1">
+                {currentTestimonial.name}
+              </h3>
+              <p className="text-sm sm:text-base text-sky-600 font-medium mb-6">
+                {currentTestimonial.title}
+              </p>
+              
+              <div className="flex justify-center mb-6">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className={`w-5 h-5 sm:w-6 sm:h-6 ${i < currentTestimonial.rating ? "text-yellow-400 fill-yellow-400" : "text-gray-300"}`}
+                  />
+                ))}
+              </div>
 
-          <div className="flex justify-center mb-6 sm:mb-8">
-            <div className="relative">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 blur-xl scale-110 opacity-30"></div>
-              <img
-                src={testimonials[current].image}
-                alt={testimonials[current].name}
-                className="relative z-10 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full border-4 border-white shadow-xl object-cover transition-all duration-700"
-              />
+              <p className="text-lg sm:text-xl md:text-2xl text-slate-700 italic leading-relaxed max-w-xl mx-auto mb-8">
+                "{currentTestimonial.quote}"
+              </p>
             </div>
           </div>
 
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 italic max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-8 transition-opacity duration-700 ease-in-out px-2">
-            "{testimonials[current].quote}"
-          </p>
-
-          {/* Star Rating */}
-          <div className="flex justify-center mb-3 sm:mb-4">
-            {[...Array(testimonials[current].rating)].map((_, i) => (
-              <svg
-                key={i}
-                className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current"
-                viewBox="0 0 20 20"
-              >
-                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-              </svg>
-            ))}
-          </div>
-
-          <div className="font-bold text-lg sm:text-xl text-gray-900 mb-1 sm:mb-2">
-            {testimonials[current].name}
-          </div>
-          <div className="text-sm sm:text-base md:text-lg text-blue-600 font-medium">
-            {testimonials[current].title}
-          </div>
-
           {/* Navigation Controls */}
-          <div className="flex justify-center items-center gap-4 sm:gap-6 md:gap-8 mt-8 sm:mt-10 md:mt-12">
-            <button
+          <div className="flex justify-between items-center mt-8 sm:mt-10">
+            <Button
               onClick={prev}
-              className="p-2 sm:p-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300"
+              variant="outline"
+              size="icon"
+              className="rounded-full w-10 h-10 sm:w-12 sm:h-12 text-slate-600 hover:bg-slate-100"
+              aria-label="Previous testimonial"
             >
-              <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
-            </button>
+              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+            </Button>
 
             {/* Dots */}
             <div className="flex gap-2 sm:gap-3">
               {testimonials.map((_, i) => (
                 <button
                   key={i}
-                  onClick={() => setCurrent(i)}
-                  className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300 ${
-                    i === current 
-                      ? "bg-gradient-to-r from-blue-500 to-purple-600 scale-125" 
-                      : "bg-gray-300 hover:bg-gray-400"
-                  }`}
+                  onClick={() => handleSetCurrent(i)}
+                  className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 focus:outline-none
+                    ${ i === current ? "bg-sky-500 scale-125" : "bg-slate-300 hover:bg-slate-400" }
+                  `}
+                  aria-label={`Go to testimonial ${i + 1}`}
                 />
               ))}
             </div>
 
-            <button
+            <Button
               onClick={next}
-              className="p-2 sm:p-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300"
+              variant="outline"
+              size="icon"
+              className="rounded-full w-10 h-10 sm:w-12 sm:h-12 text-slate-600 hover:bg-slate-100"
+              aria-label="Next testimonial"
             >
-              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
-            </button>
+              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+            </Button>
           </div>
         </div>
-
-        {/* Background Decorations - smaller on mobile */}
-        <div className="absolute top-8 left-4 sm:top-10 sm:left-10 w-16 h-16 sm:w-20 sm:h-20 bg-blue-200 rounded-full opacity-20 blur-xl"></div>
-        <div className="absolute bottom-8 right-4 sm:bottom-10 sm:right-10 w-20 h-20 sm:w-32 sm:h-32 bg-purple-200 rounded-full opacity-20 blur-xl"></div>
-        <div className="absolute top-1/2 left-2 sm:left-5 w-12 h-12 sm:w-16 sm:h-16 bg-yellow-200 rounded-full opacity-20 blur-xl"></div>
       </div>
     </section>
   );

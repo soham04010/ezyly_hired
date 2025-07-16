@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import Link from 'next/link';
 import Footer from '@/components/Footer';
 import { Users, Target, Award, CheckCircle, Globe, Heart, Lightbulb, Shield } from 'lucide-react';
 
@@ -28,38 +29,39 @@ const values = [
 
 const achievements = [
   {
-    number: "500+",
+    number: "100%",
     label: "Placements",
     description: "Successful placements across multiple industries."
   },
   {
-    number: "98%",
+    number: "100%",
     label: "Satisfaction",
     description: "Client satisfaction rate with our recruitment process."
   },
   {
-    number: "10+",
+    number: "6+",
     label: "Years Experience",
     description: "A decade of expertise in talent acquisition."
   },
   {
     number: "100+",
     label: "Clients",
-    description: "Trusted by over 100 companies and organizations."
+    description: "Trusted by over 100+ companies and Candidates."
   }
 ];
 
 const services = [
-  "Permanent & Contract Staffing",
-  "Executive Search & Headhunting",
-  "Talent Mapping & Market Insights",
-  "Employer Branding Solutions",
-  "Candidate Screening & Assessment",
-  "Onboarding Support"
+  "Profile Enhancement & Marketing",
+  "Interview Support to Candidate",
+  "Resume Making & Grooming",
+  "Resume Understanding",
+  "Training & Interview Preparation",
+  "Assessments Upto 4 Hours",
+  "Assessments More Than 4 Hours",
+  "Personal Career Counseling",
 ];
 
 const About = () => {
-
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -80,7 +82,7 @@ const About = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-4xl font-bold text-gray-900 mb-8">Our Mission</h2>
+                <h2 className="text-4xl font-bold text-[#424242] mb-8">Our Mission</h2>
                 <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                   At EzylyHired, we believe that finding the right talent should be easy, efficient, and effective. Our mission is to bridge the gap between exceptional professionals and organizations that value their skills, experience, and potential.
                 </p>
@@ -101,7 +103,7 @@ const About = () => {
                   <div className="flex items-center space-x-3">
                     <Users className="h-8 w-8" />
                     <div>
-                      <div className="text-2xl font-bold">500+</div>
+                      <div className="text-2xl font-bold">100%</div>
                       <div className="text-sm opacity-90">Successful Placements</div>
                     </div>
                   </div>
@@ -115,7 +117,7 @@ const About = () => {
         <div className="py-20 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Core Values</h2>
+              <h2 className="text-4xl font-bold text-[#424242] mb-6">Our Core Values</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 These fundamental principles guide everything we do and shape our relationships with clients and candidates.
               </p>
@@ -124,7 +126,7 @@ const About = () => {
               {values.map((value, index) => (
                 <div key={index} className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
                   <div className="mb-4">{value.icon}</div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">{value.title}</h3>
+                  <h3 className="text-xl font-semibold text-[#424242] mb-4">{value.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{value.description}</p>
                 </div>
               ))}
@@ -144,7 +146,7 @@ const About = () => {
                 />
               </div>
               <div>
-                <h2 className="text-4xl font-bold text-gray-900 mb-8">Our Services</h2>
+                <h2 className="text-4xl font-bold text-[#424242] mb-8">Our Services</h2>
                 <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                   We offer comprehensive recruitment solutions tailored to meet the diverse needs of modern businesses and professionals.
                 </p>
@@ -186,7 +188,7 @@ const About = () => {
         <div className="py-20 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Why Choose EzylyHired?</h2>
+              <h2 className="text-4xl font-bold text-[#424242] mb-6">Why Choose EzylyHired?</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 We go beyond traditional recruitment to deliver exceptional value to both employers and job seekers.
               </p>
@@ -194,21 +196,21 @@ const About = () => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="bg-white p-8 rounded-xl shadow-lg">
                 <Globe className="h-12 w-12 text-teal-600 mb-6" />
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Industry Expertise</h3>
+                <h3 className="text-2xl font-bold text-[#424242] mb-4">Industry Expertise</h3>
                 <p className="text-gray-600 leading-relaxed">
                   Deep knowledge across multiple industries including finance, technology, marketing, legal, and administrative sectors with specialized recruitment strategies for each.
                 </p>
               </div>
               <div className="bg-white p-8 rounded-xl shadow-lg">
                 <Users className="h-12 w-12 text-teal-600 mb-6" />
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Personalized Approach</h3>
+                <h3 className="text-2xl font-bold text-[#424242] mb-4">Personalized Approach</h3>
                 <p className="text-gray-600 leading-relaxed">
                   Every placement is unique. We take time to understand your specific needs, culture, and goals to ensure the perfect match between talent and opportunity.
                 </p>
               </div>
               <div className="bg-white p-8 rounded-xl shadow-lg">
                 <Award className="h-12 w-12 text-teal-600 mb-6" />
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Proven Results</h3>
+                <h3 className="text-2xl font-bold text-[#424242] mb-4">Proven Results</h3>
                 <p className="text-gray-600 leading-relaxed">
                   Our track record speaks for itself - high client satisfaction rates, successful long-term placements, and strong relationships built on trust and results.
                 </p>
@@ -220,23 +222,21 @@ const About = () => {
         {/* Call to Action Section */}
         <div className="py-20 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Ready to Get Started?</h2>
+            <h2 className="text-4xl font-bold text-[#424242] mb-6">Ready to Get Started?</h2>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
               Whether you're looking for exceptional talent or seeking your next career opportunity, 
               we're here to help you achieve your goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg font-medium rounded-full transition-colors">
-                Hire Talent
-              </button>
-              <button className="border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-8 py-4 text-lg font-medium rounded-full transition-colors">
-                Find Jobs
-              </button>
+              <Link href="/contact">
+                <button className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg font-medium rounded-full transition-colors cursor-pointer">
+                  Hire Talent
+                </button>
+              </Link>
             </div>
           </div>
         </div>
       </main>
-      
       <Footer />
     </div>
   );
