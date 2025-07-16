@@ -14,7 +14,7 @@ const navLinks = [
     ],
   },
   { label: "Testimonial", href: "/#TestimonialsSection" },
-  { label: "Blogs", href: "/blogs" },
+  // { label: "Blogs", href: "/blogs" },
   { label: "Contact Us", href: "/contact" },
 ];
 
